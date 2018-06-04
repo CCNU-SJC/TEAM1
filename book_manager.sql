@@ -65,7 +65,8 @@ CREATE TABLE `apply` (
   `ISBN` varchar(20) NOT NULL,
   `approval_state` int(1) NOT NULL DEFAULT '1',
   `apply_time` int(11) NOT NULL,
-  `reason` text
+  `reason` text,
+   `operate_time` int(11) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

@@ -45,21 +45,21 @@
                             </li>
 
                             <li>
-                                <a href="./change-book.html" >
+                                <a href="./change-book.php" >
                                     <i class="glyphicon glyphicon-cog"></i>
                                     书库管理
                                 </a>
                             </li>
 
                             <li>
-                                <a href="./change-manage.html">
+                                <a href="./change-manage.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
                                     管理日志        
                                 </a>
                             </li>
         
                             <li>
-                                <a href="./change-person.html">
+                                <a href="./change-person.php">
                                     <i class="glyphicon glyphicon-globe"></i>
                                     管理用户信息
                                     <span class="label label-warning pull-right">5</span>
@@ -79,7 +79,7 @@
                                             <?php
                                                
                                                $dbc = mysqli_connect('localhost','root','','book_manager');
-                                               $query = "SELECT * FROM apply ORDER BY apply_time ASC";
+                                               $query = "SELECT * FROM apply WHERE approval_state=1 ORDER BY apply_time ASC";
                                                $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
 
                                                if (!mysqli_num_rows($result) ){
@@ -118,11 +118,11 @@
                                                     echo '<td>' . $row['reason'] . '</td>';
                                                     echo '<td>';
                                                     if ($row['apply_type'] == 3){
-                                                       echo '<input class="btn btn-warning" type="button" value="检查下架" onclick="window.location.href="change_state.php?id='.$row['id'].'" >';
+                                                       echo '<a class="btn btn-warning" href="state/undercarriage.php?id='.$row['id'].'">检查下架</a>';
                                                     } 
                                                     else{
-                                                       echo '<input class="btn btn-primary" type="button" value="通过" onclick="window.location.href="change_state.php?id='.$row['id'].'">
-                                                            <input class="btn btn-danger" type="button" value="不通过" onclick="window.location.href="change_state.php?id='.$row['id'].'">';
+                                                       echo '<a class="btn btn-primary" href="state/pass.php?id='.$row['id'].'">通过</a>
+                                                            <a class="btn btn-danger" href="state/reject.php?id='.$row['id'].'">不通过</a>';
                                                     }
                                                     echo '</td>';
                                                     echo '</tr>';
@@ -158,8 +158,8 @@
                                             <th>申请类型</th>
                                             <th>图书ID</th>
                                             <th>ISBN</th>
-                                            <th>申请时间</th>
                                             <th>操作类型</th>
+                                             <th>申请时间</th>
                                             <th>操作时间</th>
                                         </tr>  
                                     </thead>  
@@ -181,7 +181,18 @@
                                                     echo '</td>';
                                                     echo '<td>' . $row['book_id'] . '</td>';
                                                     echo '<td>' . $row['ISBN'] . '</td>';
-                                                    echo '<td>' . $row['approval_state'] . '</td>';
+                                                    echo '<td>' ;
+                                                    switch($row['approval_state']) {
+                                                        case "2":
+                                                        echo "通过";
+                                                        break;
+                                                        case "3":
+                                                        echo "不通过";
+                                                        break;
+                                                        case "4":
+                                                        echo "检查下架";
+                                                    }
+                                                    echo '</td>';
                                                     date_default_timezone_set("Asia/Shanghai");
                                                     echo '<td>' . date("Y/m/d h:ia",$row['apply_time']) . '</td>';
                                              

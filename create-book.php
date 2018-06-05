@@ -24,27 +24,27 @@
                         <div class="row" >  
                             <div class=" col-md-4">  
                                 <label class="control-label">图书名称：</label>  
-                                <input id="txtTitle" type="text" class="form-control" name="name"> 
+                                <input id="txtTitle" type="text" class="form-control" name="name" required="required"> 
                             </div>
                             <div class=" col-md-4" >
                                 <label class="control-label">图书作者：</label>  
-                                <input id="txtAuthor" type="text" class="form-control" name="author">  
+                                <input id="txtAuthor" type="text" class="form-control" name="author" required="required">  
                             </div> 
                             <div class=" col-md-4"> 
                                 <label class="control-label">ISBN：</label>  
-                                <input id="txtISBN" type="text" class="form-control" name="ISBN">  
+                                <input id="txtISBN" type="text" class="form-control" name="ISBN" required="required">  
                             </div>  
                         </div>  
                         <div class="row" style="margin-top:20px;" >  
                                 <div class=" col-md-4">  
                                     <label class="control-label"> 出 版 社 ：</label>  
-                                    <input id="txtpublish" type="text" class="form-control" name="press"> 
+                                    <input id="txtpublish" type="text" class="form-control" name="press" required="required"> 
                                 </div>
                         </div>
                         <div class="row" style="margin-top:20px;" >  
                                 <div class=" col-md-8">  
                                     <label class="control-label">图书简介：</label>  
-                                    <textarea class="form-control" name="introduction" id="content" rows="4"></textarea>
+                                    <textarea class="form-control" name="introduction" id="content" rows="4" required="required"></textarea>
                                 </div>
                         </div> 
                          

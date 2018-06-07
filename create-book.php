@@ -44,7 +44,7 @@
                         <div class="row" style="margin-top:20px;" >  
                                 <div class=" col-md-8">  
                                     <label class="control-label">图书简介：</label>  
-                                    <textarea class="form-control" name="introduction" id="content" rows="4" required="required"></textarea>
+                                    <textarea class="form-control" name="introduction" required="required" id="content" rows="4"></textarea>
                                 </div>
                         </div> 
                          
@@ -68,12 +68,13 @@ error_reporting(0);
     $ISBN = $_POST['ISBN'];
     $press = $_POST['press'];
     $introduction = $_POST['introduction'];
+    $state = "在架上";
 
     $dbc = mysqli_connect('localhost','root','','book_manager');
 
     if ($_POST){
-      $query ="INSERT INTO book_info(name,author,ISBN,press,introduction) VALUES('$name','$author','$ISBN','$press',
-      '$introduction')";
+      $query ="INSERT INTO book_info(name,author,ISBN,press,introduction,state) VALUES('$name','$author','$ISBN','$press',
+      '$introduction','$state')";
       mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
       mysqli_close($dbc);
       header('location:'.'change-book.php');

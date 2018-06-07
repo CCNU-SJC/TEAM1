@@ -99,25 +99,14 @@
                                                      while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
                                                     echo '<td>' . $row['user_id'] .  '</td>';
-                                                    echo '<td>' ;
-                                                        switch ($row['apply_type']) {
-                                                            case "1":
-                                                                echo "借书";
-                                                                break;
-                                                            case "2":
-                                                                echo "还书";
-                                                                break;
-                                                            case "3":
-                                                                echo  "丢失损毁";  
-                                                            }
-                                                    echo '</td>';
+                                                   echo '<td>' . $row['apply_type'] .  '</td>';
+                                                   //apply_type:借书、还书、丢失损毁
                                                     echo '<td>' . $row['book_id'] . '</td>';
                                                     echo '<td>' . $row['ISBN'] . '</td>';
-                                                    date_default_timezone_set("Asia/Shanghai");
-                                                    echo '<td>' . date("Y/m/d h:ia",$row['apply_time']) . '</td>';
+                                                    echo '<td>' . $row['apply_time'] . '</td>';
                                                     echo '<td>' . $row['reason'] . '</td>';
                                                     echo '<td>';
-                                                    if ($row['apply_type'] == 3){
+                                                    if ($row['apply_type'] == "丢失损毁"){
                                                        echo '<a class="btn btn-warning" href="state/undercarriage.php?id='.$row['id'].'">检查下架</a>';
                                                     } 
                                                     else{
@@ -127,11 +116,8 @@
                                                     echo '</td>';
                                                     echo '</tr>';
                                                     }}
-
-
                                             ?>
     
-
                                         </tbody>  
                                 </table>  
                         </div>
@@ -143,9 +129,10 @@
 
 
                             <?php
+                               $handling = "待审批";
                                
                                $dbc = mysqli_connect('localhost','root','','book_manager');
-                               $query = "SELECT * FROM apply WHERE approval_state!='1' ORDER BY apply_time ASC";
+                               $query = "SELECT * FROM apply WHERE approval_state!='$handling' ORDER BY apply_time ASC";
                                $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
 
                                if (!mysqli_num_rows($result) ){
@@ -167,41 +154,17 @@
                                     while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
                                                     echo '<td>' . $row['user_id'] .  '</td>';
-                                                    echo '<td>' ;
-                                                        switch ($row['apply_type']) {
-                                                            case "1":
-                                                                echo "借书";
-                                                                break;
-                                                            case "2":
-                                                                echo "还书";
-                                                                break;
-                                                            case "3":
-                                                                echo  "丢失损毁";  
-                                                            }
-                                                    echo '</td>';
+                                                    echo '<td>' . $row['apply_type'] .  '</td>';
+                                                   //apply_type:借书、还书、丢失损毁
                                                     echo '<td>' . $row['book_id'] . '</td>';
                                                     echo '<td>' . $row['ISBN'] . '</td>';
-                                                    echo '<td>' ;
-                                                    switch($row['approval_state']) {
-                                                        case "2":
-                                                        echo "通过";
-                                                        break;
-                                                        case "3":
-                                                        echo "不通过";
-                                                        break;
-                                                        case "4":
-                                                        echo "检查下架";
-                                                    }
-                                                    echo '</td>';
-                                                    date_default_timezone_set("Asia/Shanghai");
-                                                    echo '<td>' . date("Y/m/d h:ia",$row['apply_time']) . '</td>';
-                                             
-                                                      echo '<td>' . date("Y/m/d h:ia",$row['operate_time']) . '</td>';
+                                                    echo '<td>' . $row['approval_state'] .'</td>';
+                                                    //approval_state:待审批、通过、不通过、检查下架
+                                                     echo '<td>' . $row['apply_time'] .'</td>';
+                                                      echo '<td>' .$row['operate_time'] . '</td>';
                                                     echo '</tr>';
 
                                 }}
-
-
                             ?>
                                     </tbody>  
                             </table>

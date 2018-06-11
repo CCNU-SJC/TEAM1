@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>图书管理系统-创建新书</title>
+    <title>图书管理系统-查询图书</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css"  href="css/refer.css"/>
     <link rel="stylesheet" type="text/css"  href="css/bootstrap.css" />
@@ -52,8 +52,8 @@
           
                         <div class="row text-right" style="margin-top:20px;">  
                             <div class="col-sm-7">  
-                                <input class="btn btn-primary" type="submit" value="查找图书" onclick="SearchData()">  
-                                <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="./user-approval.html">个人信息</a></button>  
+                                <input class="btn btn-primary" type="submit" name="search" value="查找图书" onclick="SearchData()">  
+                                <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="./user-approval.php >">个人信息</a></button>  
                             </div>  
                         </div>  
                     </form>  
@@ -63,24 +63,24 @@
 
 <?php
 
-//还需解决详情显示、无结果提示问题
-   
-    error_reporting(0);
+//还需解决详情显示
+error_reporting(0);
     
-    $name = $_POST['name'];
-    $author = $_POST['author'];
-    $ISBN = $_POST['ISBN'];
+$name = $_POST['name'];
+$author = $_POST['author'];
+$ISBN = $_POST['ISBN'];
 
-    $dbc = mysqli_connect('localhost','root','','book_manager');
-    $query = "SELECT * FROM book_info WHERE name = '$name' OR author = '$author' OR ISBN = '$ISBN'";
-    $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-    $num = mysqli_num_rows($result);
-            
+$dbc = mysqli_connect('localhost','root','','book_manager');
+$query = "SELECT * FROM book_info WHERE name = '$name' OR author = '$author' OR ISBN = '$ISBN'";
+$result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+
+if(($_POST['search'])) 
+{  
     if (mysqli_num_rows($result) )
     {     echo '<div class="container body-content">';
           echo 
           '<fieldset>
-          <legend>搜索结果</legend>
+          <legend>查询结果</legend>
           </fieldset> '; 
           echo '<table class="table table-striped table-hover table-responsive">';
           echo '<thead> 
@@ -88,6 +88,7 @@
           <th>书名</th>
           <th>作者</th>
           <th>ISBN</th>
+          <th>状态</th>
           </tr>  
           </thead>
           </tbody>
@@ -99,21 +100,54 @@
           echo '<td>' . $row['name'] .  '</td>';
           echo '<td>' . $row['author'] .  '</td>';
           echo '<td>' . $row['ISBN'] . '</td>';
+          echo '<td>' . $row['state'] . '</td>';
           echo '<td><div class="theme-buy">
                 <a class="btn btn-primary btn-large theme-login" href="javascript:;">详情</a>
                 </div></td>';
-        echo '<td><div class="theme-buy">
-                <a class="btn btn-primary btn-large theme-login">预约</a>
+           
+            if($row['state']=='0')
+            {
+                echo '<td><div class="theme-buy">
+                                
+                <input class="btn btn-info" type="submit" value="点击借阅" name="reserve" onclick="apply()">
+                
                 </div></td>';
+            }
+            else
+            {
+                echo '<td><input class="btn btn-danger" type="button" value="不可借阅"></a></td>';
+            }
+
+
           echo '</tr>';
           echo "</tbody>";
+         
+
+
         }
-          echo '</table>';
-          echo '</div>';
-        }  
+        
+
+        echo '</table>';
+        echo '</div>';
+
+    }  
+    
 
 
-echo '<div class="theme-popover" style="display: none;">
+
+    else
+    {
+        echo "<script>alert('无所查图书！');history.go(-1);</script>";  
+    }
+}
+
+
+?>
+
+
+<!--对如何在详情页中显示数据库数据存在疑问 -->
+
+<div class="theme-popover" style="display: none;">
              <div class="theme-poptit">
                   <a href="javascript:;" title="关闭" class="close">×</a>
                   <h3>图书详情</h3>
@@ -124,17 +158,15 @@ echo '<div class="theme-popover" style="display: none;">
                              <li><strong>书名：</strong></li>
                              <li><strong>作者：</strong></li>
                              <li><strong>ISBN：</strong></li>
+                             <li><strong>编号：</strong></li>
                              <li><strong>出版社：</strong></li>
                              <li><strong>图书简介：</strong><small></small></li>
-                        </ul>
+                         </ul>
                    </form>
-             </div>
+            </div>
     </div>
-    
-    <div class="theme-popover-mask" style="display: none;"></div>';
-
-       
-?>
+         
+    <div class="theme-popover-mask" style="display: none;"></div>
 
  <script>
 
@@ -149,8 +181,15 @@ echo '<div class="theme-popover" style="display: none;">
                     })
                 
                 })
-                
-        </script>;
+ </script>
+ 
+ <script>
+    function apply()
+    {
+        alert('已成功提交申请，等待管理员审核！')
+        window.location.href = 'user-approval.php';
+    }
+</script>
 
 </body>
 </html>

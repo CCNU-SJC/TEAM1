@@ -13,17 +13,16 @@
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <!-- 引入bootstrap-table样式 -->
 <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
-
 <!-- jquery -->
 <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <!-- bootstrap-table.min.js -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
 </head>
-</head>
+
 <body>
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
                 <div class="container-fluid">
@@ -45,8 +44,8 @@
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="./change-book.php">
+                            <li class="change">
+                                <a href="./change-book.php" style:"background-color: #3C4049;">
                                     <i class="glyphicon glyphicon-cog"></i>
                                     书库管理
                                 </a>
@@ -69,7 +68,7 @@
         
                         </ul>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                             <div class="container body-content" style="padding-top:20px;">  
                                     <div class="panel panel-default">  
                                         <div class="panel-heading">查询条件</div>  
@@ -118,7 +117,7 @@ $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_erro
 if($_POST) 
 {  
     if (mysqli_num_rows($result) )
-    {     echo '<div class="container body-content">';
+    {     echo '<div class="book">';
           echo 
           '<fieldset>
           <legend>查询结果</legend>
@@ -146,9 +145,10 @@ if($_POST)
           echo '<td>' . $row['ISBN'] . '</td>';
           echo '<td>' . $row['press'] . '</td>';
           echo '<td>' . $row['state'] . '</td>';
-          echo '<td><a class="btn btn-primary" href="edit-book.php?book_id='.$row['book_id'].'" >修改内容</a>
-                                                        <a class="btn btn-info" href="state/delete.php?book_id='.$row['book_id'].'" >下架删除</a>
-                                                        </td>';
+          echo '<td>
+                    <a class="btn btn-info" href="state/delete.php?book_id='.$row['book_id'].'" onclick="javascript:return del();" >下架删除</a>
+                    
+                </td>';
 
 
           echo '</tr>';
@@ -232,7 +232,7 @@ echo '<div class="theme-popover" style="display: none;">
 </script>
 
 <!--书库管理!-->
-<div class ="container body-content">
+<div class ="book">
                                     <!--<table id="table"></table>--> 
                                     <fieldset>
                                             <legend>书库管理</legend>
@@ -267,8 +267,8 @@ echo '<div class="theme-popover" style="display: none;">
                                                     echo '<td>' . $row['ISBN'] .  '</td>';      
                                                     echo '<td>' . $row['press'] .  '</td>'; 
                                                     echo '<td>' . $row['state'] .  '</td>';  
-                                                    echo '<td><a class="btn btn-primary" href="edit-book.php?book_id='.$row['book_id'].'" >修改内容</a>
-                                                        <a class="btn btn-info" href="state/delete.php?book_id='.$row['book_id'].'" >下架删除</a>
+                                                    echo '<td>
+                                                        <a class="btn btn-info" href="state/delete.php?book_id='.$row['book_id'].'" onclick="javascript:return del();" >下架删除</a>
                                                         </td>';
                                                     echo '</tr>';   
                                                     echo ' </tbody> '; 
@@ -279,4 +279,16 @@ echo '<div class="theme-popover" style="display: none;">
                                 </div>  
     
 </body>
+
+<script>
+    function del() {
+        var msg = "您真的确定要删除吗？\n\n请确认！";
+        if(confirm(msg)==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+</script>
 </html>

@@ -17,5 +17,10 @@
     padding-left: 50px;
     color: #fff;
 }
-/*定义二级菜单样式*/
+/*背景图片*/
+img.bgimg{
+    width: 1440px;
+    height: 800px;
+}
+
 

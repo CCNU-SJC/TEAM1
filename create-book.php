@@ -16,30 +16,33 @@
             <a class="navbar-brand" href="./index.html" id="logo">图书管理系统</a>
         </div>
    </div>
+   
    <div class="container body-content">
         <div class="panel panel-default">  
                 <div class="panel-heading">创建新书</div>  
-                <div class="panel-body">  
+                <div class="panel-body text-center">  
                     <form class="form-inline" method="get" action="state/create.php">  
                         <div class="row" >  
                           
-                            <div class=" col-md-4"> 
+                            <div class=" col-md-12"> 
                                 <label class="control-label">ISBN：</label>  
                                 <input id="txtISBN" type="text" class="form-control" name="ISBN" required="required">  
                             </div>  
+
                         </div>  
                       
                         </div> 
                          
-                        <div class="row text-right" style="margin-top:20px;">  
+                        <div class="row text-right" style="margin:20px 0;">  
                             <div class="col-sm-12">  
                                 <input type="submit" class="btn btn-primary" value="添加图书">
-                                <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="./change-book.php">返 回</a></button>  
+                                <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255) ' href="./change-book.php">返 回</a></button>  
                             </div>  
                         </div>  
                     </form>  
                 </div>  
         </div> 
+        <img class="bgimg" src="images/cbook.png">
    </div>
 
 </body>

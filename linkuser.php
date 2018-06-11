@@ -10,9 +10,9 @@
   	}
 	function jump(){
             if($this->username=="666"){
-            	header("Location:change-book.html");
+            	header("Location:change-book.php");
             }elseif($this->username=="1234"){
-            	header("Location:user-approval.html");
+            	header("Location:user-approval.php");
             }
     }
  }

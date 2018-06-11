@@ -23,6 +23,7 @@
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 </head>
+
 <body>
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
                 <div class="container-fluid">
@@ -44,14 +45,14 @@
                                 </a>
                             </li>
 
-                            <li>
+                            <li >
                                 <a href="./change-book.php" >
                                     <i class="glyphicon glyphicon-cog"></i>
                                     书库管理
                                 </a>
                             </li>
 
-                            <li>
+                            <li class="change">
                                 <a href="./change-manage.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
                                     管理日志        

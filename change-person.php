@@ -23,6 +23,18 @@
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 </head>
+<style>
+.btn-default {
+    color: #333;
+    background-color: #ccc!important;
+    border-color: #ccc;
+}
+.btn-default:hover {
+    color: #333;
+    background-color: #ccc!important;
+    border-color: #ccc;
+}
+</style>
 <body>
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
                 <div class="container-fluid">
@@ -59,7 +71,7 @@
                                 </a>
                             </li>
         
-                            <li>
+                            <li class="change">
                                 <a href="./change-person.php">
                                     <i class="glyphicon glyphicon-globe"></i>
                                     管理用户信息
@@ -104,7 +116,7 @@
                                                 echo '<td><a class="btn btn-danger" href="state/forbidden.php?user_id='.$row['user_id'].'">禁用</a></td>';
                                               }
                                               else{
-                                                echo "代建按钮";
+                                                echo '<td><a class="btn btn-default" href="">禁用</a></td>';
                                               }
                                               echo '</td></tr></tbody> '; 
                                           }}

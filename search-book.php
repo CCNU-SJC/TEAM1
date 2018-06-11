@@ -63,7 +63,6 @@
 
 <?php
 
-//还需解决详情显示
 error_reporting(0);
     
 $name = $_POST['name'];
@@ -87,6 +86,7 @@ if(($_POST['search']))
           <tr>
           <th>书名</th>
           <th>作者</th>
+          <th>编号</th>
           <th>ISBN</th>
           <th>状态</th>
           </tr>  
@@ -99,6 +99,7 @@ if(($_POST['search']))
           echo '<tr>';
           echo '<td>' . $row['name'] .  '</td>';
           echo '<td>' . $row['author'] .  '</td>';
+          echo '<td>' . $row['book_id'] . '</td>';
           echo '<td>' . $row['ISBN'] . '</td>';
           echo '<td>' . $row['state'] . '</td>';
           echo '<td><div class="theme-buy">
@@ -109,13 +110,13 @@ if(($_POST['search']))
             {
                 echo '<td><div class="theme-buy">
                                 
-                <input class="btn btn-info" type="submit" value="点击借阅" name="reserve" onclick="apply()">
+                <a class="btn btn-info" type="submit" value="申请借书" name="reserve" href="apply.php?book_id='.$row['book_id'].'">申请借书</a>
                 
                 </div></td>';
             }
             else
             {
-                echo '<td><input class="btn btn-danger" type="button" value="不可借阅"></a></td>';
+                echo '<td><input class="btn btn-danger" type="button" value="不可借阅"></td>';
             }
 
 
@@ -183,13 +184,5 @@ if(($_POST['search']))
                 })
  </script>
  
- <script>
-    function apply()
-    {
-        alert('已成功提交申请，等待管理员审核！')
-        window.location.href = 'user-approval.php';
-    }
-</script>
-
 </body>
 </html>

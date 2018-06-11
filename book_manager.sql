@@ -14,6 +14,7 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `apply` (
   `id` int(10) PRIMARY KEY AUTO_INCREMENT,
+  `book_name` varchar(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   `apply_type` varchar(10) NOT NULL,
   `book_id` int(10) NOT NULL,

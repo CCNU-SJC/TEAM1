@@ -31,7 +31,7 @@
     $ISBN = $_POST['ISBN'];
 
     if ($_POST){
-      $query ="INSERT INTO apply(book_name,ISBN, book_id) VALUES('$name','$ISBN','$book_id')";
+      $query ="INSERT INTO apply(book_name,ISBN, book_id,apply_time) VALUES('$name','$ISBN','$book_id',now())";
       mysqli_query($dbc,$query) or die("error query database". mysqli_error($dbc));
       mysqli_close($dbc);
       header('location:'.'user-approval.php');

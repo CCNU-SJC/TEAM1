@@ -77,7 +77,7 @@ error_reporting(0);
           
                         <div class="row text-right" style="margin-top:20px;">  
                             <div class="col-sm-12">  
-                                <button class="btn btn-primary" type=submit value="修改内容" ></button>  
+                                <button class="btn btn-primary" type=submit value="修改内容" >修改内容</button>  
                                 <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="./change-book.php">返 回</a></button>  
                             </div>  
                         </div>  

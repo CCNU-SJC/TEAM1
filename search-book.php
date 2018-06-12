@@ -29,6 +29,7 @@
             <a class="navbar-brand" href="./index.html" id="logo">图书管理系统</a>
         </div>
    </div>
+<div class="bg">
    <div class="container body-content">
         <div class="panel panel-default">  
                 <div class="panel-heading">查找图书</div>  
@@ -53,13 +54,14 @@
                         <div class="row text-right" style="margin-top:20px;">  
                             <div class="col-sm-7">  
                                 <input class="btn btn-primary" type="submit" name="search" value="查找图书" onclick="SearchData()">  
-                                <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="./user-approval.php >">个人信息</a></button>  
+                                <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="user-approval.php">个人信息</a></button>  
                             </div>  
                         </div>  
                     </form>  
                 </div>  
         </div> 
    </div>
+
 
 <?php
 
@@ -76,7 +78,7 @@ $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_erro
 if(($_POST['search'])) 
 {  
     if (mysqli_num_rows($result) )
-    {     echo '<div class="container body-content">';
+    {     echo '<div class="container book">';
           echo 
           '<fieldset>
           <legend>查询结果</legend>
@@ -134,8 +136,6 @@ if(($_POST['search']))
     }  
     
 
-
-
     else
     {
         echo "<script>alert('无所查图书！');history.go(-1);</script>";  
@@ -144,7 +144,7 @@ if(($_POST['search']))
 
 
 ?>
-
+</div>
 
 <!--对如何在详情页中显示数据库数据存在疑问 -->
 

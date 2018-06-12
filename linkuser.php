@@ -12,7 +12,7 @@
             if($this->username=="666"){
             	header("Location:change-book.php");
             }elseif($this->username=="1234"){
-            	header("Location:user-approval.php");
+            	header("Location:search-book.php");
             }
     }
  }

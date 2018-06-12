@@ -54,7 +54,8 @@
                             <li>
                                 <a href="./change-manage.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
-                                    管理日志        
+                                    管理日志
+                                    <span class="label label-warning pull-right">5</span>        
                                 </a>
                             </li>
         
@@ -62,7 +63,6 @@
                                 <a href="./change-person.php">
                                     <i class="glyphicon glyphicon-globe"></i>
                                     管理用户信息
-                                    <span class="label label-warning pull-right">5</span>
                                 </a>
                             </li>
         

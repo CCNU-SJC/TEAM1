@@ -52,7 +52,7 @@
                                 </a>
                             </li>
 
-                            <li>
+                            <li class="change">
                                 <a href="./user-borrow.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
                                     当前借阅        

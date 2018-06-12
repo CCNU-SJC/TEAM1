@@ -55,7 +55,8 @@
                             <li class="change">
                                 <a href="./change-manage.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
-                                    管理日志        
+                                    管理日志
+                                    <span class="label label-warning pull-right">5</span>        
                                 </a>
                             </li>
         
@@ -63,7 +64,6 @@
                                 <a href="./change-person.php">
                                     <i class="glyphicon glyphicon-globe"></i>
                                     管理用户信息
-                                    <span class="label label-warning pull-right">5</span>
                                 </a>
                             </li>
         
@@ -80,7 +80,7 @@
                                             <?php
                                                
                                                $dbc = mysqli_connect('localhost','root','','book_manager');
-                                               $query = "SELECT * FROM apply WHERE approval_state=1 ORDER BY apply_time ASC";
+                                               $query = "SELECT * FROM apply WHERE approval_state='待审批' ORDER BY apply_time ASC";
                                                $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
 
                                                if (!mysqli_num_rows($result) ){

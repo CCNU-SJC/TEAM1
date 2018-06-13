@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>图书管理系统-查询图书</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,7 +106,7 @@ if(($_POST['search']))
           echo '<td>' . $row['ISBN'] . '</td>';
           echo '<td>' . $row['state'] . '</td>';
           echo '<td><div class="theme-buy">
-                <a class="btn btn-primary btn-large theme-login" href="javascript:;">详情</a>
+                <a  class="btn btn-primary btn-large theme-login" data-ISBN="' .$row['ISBN']. '" href="javascript:;">详情</a>
                 </div></td>';
            
             if($row['state']=='0')
@@ -151,37 +152,61 @@ if(($_POST['search']))
 <div class="theme-popover" style="display: none;">
              <div class="theme-poptit">
                   <a href="javascript:;" title="关闭" class="close">×</a>
-                  <h3>图书详情</h3>
+                  <h3>图书详情</h3>  
              </div>
-             <div class="theme-popbod dform">
-                   <form class="theme-signin" name="loginform" action="" method="post">
-                        <ul>
-                             <li><strong>书名：</strong></li>
-                             <li><strong>作者：</strong></li>
-                             <li><strong>ISBN：</strong></li>
-                             <li><strong>编号：</strong></li>
-                             <li><strong>出版社：</strong></li>
-                             <li><strong>图书简介：</strong><small></small></li>
-                         </ul>
-                   </form>
-            </div>
+             
+            <div id="api_content6"></div>
+            <div class="theme-popbod dform">
+                <form class="theme-signin" name="loginform" action="" method="post">
+                   <ul>
+
+                      <li><strong>书名：</strong><small id="api_content1"></small></li>
+                      <li><strong>作者:</strong><small id="api_content2"></small></li>
+                      <li><strong>ISBN：</strong><small id="api_content3"></small></li>
+                      <li><strong>出版社:</strong><small id="api_content4"></small></li>
+                      <li><strong>图书简介:</strong><small><textarea id="api_content5"></textarea></small></li>
+
+                   </ul>
+                </form>
+            </div> 
+
     </div>
          
     <div class="theme-popover-mask" style="display: none;"></div>
 
  <script>
 
-                jQuery(document).ready(function($) {
+            jQuery(document).ready(function($) {
                     $('.theme-login').click(function(){
                         $('.theme-popover-mask').fadeIn(100);
                         $('.theme-popover').slideDown(200);
-                    })
+                    });
+
+                    $('.theme-login').one('click',function(){
+                         var isbn=$(this).attr("data-isbn")
+                         var url = "https://api.douban.com/v2/book/isbn/:" + isbn;
+                    $.ajax({
+                    url: url, 
+                    dataType:'jsonp',
+                    type:'get',
+                     success:function(data){
+                        $("#api_content1").append(data.title);
+                        $("#api_content2").append(data.author[0]);
+                        $("#api_content3").append(data.isbn13);
+                        $("#api_content4").append(data.publisher);
+                        $("#api_content5").append(data.summary);
+                        $("#api_content6").append("<img src=" +data.image+">");
+                    }
+                  })
+                });
+
                     $('.theme-poptit .close').click(function(){
                         $('.theme-popover-mask').fadeOut(100);
                         $('.theme-popover').slideUp(200);
                     })
-                
-                })
+            })
+
+            
  </script>
  
 </body>

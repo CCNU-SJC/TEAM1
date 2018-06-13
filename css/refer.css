@@ -62,6 +62,12 @@
     height: 200%;
 
 }
+/*背景图片*/
+.bg{
+	width:1440px;
+	height:800px ;
+	background-image: url(../images/cbook.png);
+}
 
 /*表格样式*/
 .table th, .table td { 
@@ -281,4 +287,24 @@ fieldset{
 }
 .theme-desc, .theme-version {
 	padding-top: 0
+}
+
+#api_content6{
+	height: 206px;
+    width: 135px;
+    z-index: 1000;
+	float: left;
+	margin: 20px;
+}
+#api_content5{
+	width: 350px;
+    height: 160px;
+}
+
+img{
+	height: 206px;
+    width: 135px;
+}
+small{
+	height: 32px;
 }

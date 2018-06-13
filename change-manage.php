@@ -56,7 +56,7 @@
                                 <a href="./change-manage.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
                                     管理日志
-                                    <span class="label label-warning pull-right">5</span>        
+                                    <span id="num" class="label label-warning pull-right" ></span>        
                                 </a>
                             </li>
         
@@ -73,10 +73,8 @@
                         <div class="approval">
                                 <fieldset>
                                         <legend>审批状态</legend>
-                                </fieldset>
-                                <table class="table table-striped table-hover table-responsive">  
+                                </fieldset>  
                                         
-
                                             <?php
                                                
                                                $dbc = mysqli_connect('localhost','root','','book_manager');
@@ -88,19 +86,21 @@
                                                 }
 
                                                 else{
-                                                     echo '  <thead> 
-                                                     <tr>
+                                                     echo '<table class="table table-striped table-hover table-responsive" id="test">
+                                                     <thead> 
+                                                  <tr>
                                                     <th>用户账号</th>
                                                     <th>申请类型</th>
                                                     <th>图书ID</th>
                                                     <th>ISBN</th>
                                                     <th>申请时间</th>
-                                                     </tr>  
-                                                    </thead><tbody>  ';
+                                                  </tr>  
+                                                    </thead>
+                                                    <tbody id="apply_type">';
                                                      while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
                                                     echo '<td>' . $row['user_id'] .  '</td>';
-                                                   echo '<td>' . $row['apply_type'] .  '</td>';
+                                                    echo '<td>' . $row['apply_type'] .  '</td>';
                                                    //apply_type:借书、还书、丢失损毁
                                                     echo '<td>' . $row['book_id'] . '</td>';
                                                     echo '<td>' . $row['ISBN'] . '</td>';
@@ -115,20 +115,20 @@
                                                             <a class="btn btn-danger" href="state/reject.php?id='.$row['id'].'">不通过</a>';
                                                     }
                                                     echo '</td>';
-                                                    echo '</tr>';
-                                                    }}
-                                            ?>
-    
-                                        </tbody>  
-                                </table>  
+                                                    echo '</tr>';  
+                                                }
+                                                echo '</tbody>';
+                                                echo '</table>';
+                                            }
+                                            ?> 
+                                                
+                                  
                         </div>
                         <div class="history">
                                 <fieldset>
                                         <legend>操作历史</legend>
                                 </fieldset>
-                            <table class="table table-striped table-hover table-responsive">  
-
-
+                              
                             <?php
                                $handling = "待审批";
                                
@@ -141,7 +141,9 @@
                                 }
 
                                 else{
-                                   echo ' <tr>
+                                   echo '<table class="table table-striped table-hover table-responsive">
+                                   <thead> 
+                                        <tr>
                                             <th>用户账号</th>
                                             <th>申请类型</th>
                                             <th>图书ID</th>
@@ -161,18 +163,36 @@
                                                     echo '<td>' . $row['ISBN'] . '</td>';
                                                     echo '<td>' . $row['approval_state'] .'</td>';
                                                     //approval_state:待审批、通过、不通过、检查下架
-                                                     echo '<td>' . $row['apply_time'] .'</td>';
-                                                      echo '<td>' .$row['operate_time'] . '</td>';
+                                                    echo '<td>' . $row['apply_time'] .'</td>';
+                                                    echo '<td>' .$row['operate_time'] . '</td>';
                                                     echo '</tr>';
 
-                                }}
+                                }
+                                echo ' </tbody>  ';
+                                echo ' </table> ';
+                              }
                             ?>
-                                    </tbody>  
-                            </table>
                         </div>  
                     </div>
                 </div>
     </div>
     
 </body>
+<script>
+     function show(){
+        var tab = document.getElementById("test");
+        var rows = tab.rows.length-1;
+        alert("行数"+rows);
+     }
+    
+    if ($("#test").length > 0){
+       //当条件为 true 时执行的代码
+       //console.log(">0");
+        show();
+    }
+     else{
+       //当条件不为 true 时执行的代码
+       document.getElementById("num").style.display='none';
+    }
+</script>
 </html>

@@ -133,7 +133,7 @@ if($_POST)
           <th>状态</th>
           </tr>  
           </thead>
-          </tbody>
+          <tbody>
           ';
           while ($row = mysqli_fetch_array($result)) 
         {
@@ -290,5 +290,10 @@ echo '<div class="theme-popover" style="display: none;">
             return false;
         }
     }
+</script>
+
+<script>
+
+
 </script>
 </html>

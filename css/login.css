@@ -22,6 +22,11 @@ a {
 	text-decoration:none; 
 	cursor:pointer; 
 }
+/*通用*/
+a:hover{
+    text-decoration: none;
+}
+
 .change:hover{
 	text-decoration: none;
 }

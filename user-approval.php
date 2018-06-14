@@ -48,7 +48,7 @@
                                 <a href="./user-approval.php" >
                                     <i class="glyphicon glyphicon-cog"></i>
                                     审批状态
-                                    <span class="label label-warning pull-right">5</span>
+                                    <span id="num" class="label label-warning pull-right">5</span>
                                 </a>
                             </li>
 
@@ -74,7 +74,7 @@
                                 <fieldset>
                                         <legend>审批状态</legend>
                                 </fieldset>
-                                <table class="table table-striped table-hover table-responsive">  
+                                <table id="test" class="table table-striped table-hover table-responsive">  
                                         <thead>  
                                             <tr>
                                                 <th>图书名称</th>
@@ -117,4 +117,24 @@
     </div>
     
 </body>
+<script>
+    
+     function show(){
+        var tab = document.getElementById("test");
+        var rows = tab.rows.length-1;
+        document.getElementById("num").innerHTML=rows;
+        console.log(rows);
+     }
+    
+    if ($("#test").length > 0){
+       //当条件为 true 时执行的代码
+       console.log(">0");
+       show();
+    }
+     else{
+       //当条件不为 true 时执行的代码
+       console.log(">1");
+       document.getElementById("num").style.display='none';
+    }
+</script>
 </html>

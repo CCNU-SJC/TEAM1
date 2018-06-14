@@ -48,7 +48,7 @@
                                 <a href="./user-approval.php" >
                                     <i class="glyphicon glyphicon-cog"></i>
                                     审批状态
-                                    <span class="label label-warning pull-right">5</span>
+                                    
                                 </a>
                             </li>
 

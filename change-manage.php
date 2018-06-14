@@ -161,7 +161,7 @@
                                                    //apply_type:借书、还书、丢失损毁
                                                     echo '<td>' . $row['book_id'] . '</td>';
                                                     echo '<td>' . $row['ISBN'] . '</td>';
-                                                    echo '<td>' . $row['approval_state'] .'</td>';
+                                                    echo '<td class="approval_state">' . $row['approval_state'] .'</td>';
                                                     //approval_state:待审批、通过、不通过、检查下架
                                                     echo '<td>' . $row['apply_time'] .'</td>';
                                                     echo '<td>' .$row['operate_time'] . '</td>';
@@ -182,16 +182,18 @@
      function show(){
         var tab = document.getElementById("test");
         var rows = tab.rows.length-1;
-        alert("行数"+rows);
+        document.getElementById("num").innerHTML=rows;
+        console.log(rows);
      }
     
     if ($("#test").length > 0){
        //当条件为 true 时执行的代码
-       //console.log(">0");
-        show();
+       console.log(">0");
+       show();
     }
      else{
        //当条件不为 true 时执行的代码
+       console.log(">1");
        document.getElementById("num").style.display='none';
     }
 </script>

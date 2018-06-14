@@ -55,7 +55,7 @@
                                 <a href="./change-manage.php">
                                     <i class="glyphicon glyphicon-credit-card"></i>
                                     管理日志
-                                    <span class="label label-warning pull-right">5</span>        
+                                           
                                 </a>
                             </li>
         

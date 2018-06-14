@@ -105,3 +105,7 @@ fieldset{
 input.clean.btn.btn-success{
     margin-left: 42rem;
 }
+/*通用*/
+a:hover{
+    text-decoration: none;
+}

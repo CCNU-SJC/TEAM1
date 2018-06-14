@@ -17,10 +17,37 @@
     padding-left: 50px;
     color: #fff;
 }
+/*通用*/
+a:hover{
+    text-decoration: none;
+}
 /*背景图片*/
-img.bgimg{
+.bg {
     width: 1440px;
-    height: 800px;
+    height: 750px;
+    background-image: url(../images/cbook.png);
+}
+
+/* 搜索输入详情图书信息 */
+.book_detail{
+    float: left;
+}
+#api_content1{
+    float: left;
+}
+#api_content{
+    float: left;
+}
+#api_content2{
+    padding-left: 25px;
+}
+textarea{
+    width: 350px;
+    height: 235px;
+}
+img{
+    width: 250px;
+    height: 350px;
 }
 
 

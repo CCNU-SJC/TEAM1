@@ -308,3 +308,7 @@ img{
 small{
 	height: 32px;
 }
+/*通用*/
+a:hover{
+    text-decoration: none;
+}

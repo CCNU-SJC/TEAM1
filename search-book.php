@@ -113,7 +113,7 @@ if(($_POST['search']))
             {
                 echo '<td><div class="theme-buy">
                                 
-                <a class="btn btn-info" type="submit" value="申请借书" name="reserve" href="apply.php?book_id='.$row['book_id'].'">申请借书</a>
+                <a class="btn btn-info" type="submit" value="申请借书" name="reserve" href="apply.php? book_id='.$row['book_id'].'">申请借书</a>
                 
                 </div></td>';
             }
@@ -180,9 +180,7 @@ if(($_POST['search']))
                     $('.theme-login').click(function(){
                         $('.theme-popover-mask').fadeIn(100);
                         $('.theme-popover').slideDown(200);
-                    });
-
-                    $('.theme-login').one('click',function(){
+                  
                          var isbn=$(this).attr("data-isbn")
                          var url = "https://api.douban.com/v2/book/isbn/:" + isbn;
                     $.ajax({
@@ -203,6 +201,12 @@ if(($_POST['search']))
                     $('.theme-poptit .close').click(function(){
                         $('.theme-popover-mask').fadeOut(100);
                         $('.theme-popover').slideUp(200);
+                        $("#api_content1").empty();
+                        $("#api_content2").empty();
+                        $("#api_content3").empty();
+                        $("#api_content4").empty();
+                        $("#api_content5").empty();
+                        $("#api_content6").empty();
                     })
             })
 

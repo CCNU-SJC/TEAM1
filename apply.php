@@ -29,9 +29,10 @@
 
     $name = $_POST['name'];
     $ISBN = $_POST['ISBN'];
+    $apply_type = 'borrow';
 
     if ($_POST){
-      $query = "INSERT INTO apply(book_name,ISBN, book_id,apply_time) VALUES('$name','$ISBN','$book_id',now())";
+      $query = "INSERT INTO apply(book_name,ISBN, book_id,apply_time,apply_type) VALUES('$name','$ISBN','$book_id',now(),'$apply_type')";
       $query_tw0 = "UPDATE book_info SET state = '不可借' WHERE book_id = $book_id";
       mysqli_query($dbc,$query) or die("error query database". mysqli_error($dbc));
       mysqli_query($dbc,$query_tw0) or die("error query database". mysqli_error($dbc));

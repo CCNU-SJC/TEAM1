@@ -98,7 +98,8 @@
 
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
-        
+                                            if($row['approval_state'] !='同意')
+                                            {
                                             echo '<tr>';
                                             echo '<td>' . $row['book_name'] .  '</td>';
                                             echo '<td>' . $row['book_id'] .  '</td>';
@@ -107,6 +108,7 @@
                                             echo '<td>' . $row['approval_state'] .  '</td>';
                                             echo '<td>' . $row['apply_time'] .  '</td>';
                                             echo '</tr>';
+                                            }
                                         }
                                         ?>
                                        

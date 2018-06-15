@@ -109,7 +109,7 @@ if(($_POST['search']))
                 <a  class="btn btn-primary btn-large theme-login" data-ISBN="' .$row['ISBN']. '" href="javascript:;">详情</a>
                 </div></td>';
            
-            if($row['state']=='0')
+            if($row['state']=='可借')
             {
                 echo '<td><div class="theme-buy">
                                 

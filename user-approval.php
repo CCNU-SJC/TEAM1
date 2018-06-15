@@ -80,6 +80,7 @@
                                                 <th>图书名称</th>
                                                 <th>图书编号</th>
                                                 <th>ISBN</th>
+                                                <th>申请类型</th>
                                                 <th>申请状态</th>
                                                 <th>申请时间</th>
                                             </tr>  
@@ -102,6 +103,7 @@
                                             echo '<td>' . $row['book_name'] .  '</td>';
                                             echo '<td>' . $row['book_id'] .  '</td>';
                                             echo '<td>' . $row['ISBN'] .  '</td>';
+                                            echo '<td>' . $row['apply_type'] .  '</td>';
                                             echo '<td>' . $row['approval_state'] .  '</td>';
                                             echo '<td>' . $row['apply_time'] .  '</td>';
                                             echo '</tr>';

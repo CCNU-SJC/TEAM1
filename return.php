@@ -32,7 +32,7 @@
     $apply_type = 'return';
 
     if ($_POST){
-      $query = "INSERT INTO apply(book_name,ISBN, book_id,apply_time,apply_type) VALUES('$name','$ISBN','$book_id',now(),'$apply_type')";
+      $query = "INSERT INTO apply(book_name,ISBN, book_id,operate_time,apply_type) VALUES('$name','$ISBN','$book_id',now(),'$apply_type')";
       $query_tw0 = "UPDATE apply SET approval_state = 'verifying' WHERE book_id = $book_id";
       mysqli_query($dbc,$query) or die("error query database". mysqli_error($dbc));
       mysqli_query($dbc,$query_tw0) or die("error query database". mysqli_error($dbc));

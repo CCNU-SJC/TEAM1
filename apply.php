@@ -31,8 +31,10 @@
     $ISBN = $_POST['ISBN'];
 
     if ($_POST){
-      $query ="INSERT INTO apply(book_name,ISBN, book_id,apply_time) VALUES('$name','$ISBN','$book_id',now())";
+      $query = "INSERT INTO apply(book_name,ISBN, book_id,apply_time) VALUES('$name','$ISBN','$book_id',now())";
+      $query_tw0 = "UPDATE book_info SET state = '不可借' WHERE book_id = $book_id";
       mysqli_query($dbc,$query) or die("error query database". mysqli_error($dbc));
+      mysqli_query($dbc,$query_tw0) or die("error query database". mysqli_error($dbc));
       mysqli_close($dbc);
       header('location:'.'user-approval.php');
       exit;

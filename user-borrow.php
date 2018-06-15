@@ -88,23 +88,28 @@
                                         <?php
 
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
-                                        $query = "SELECT * FROM apply WHERE approval_state='Borrwoed'";
+                                        $query = "SELECT * FROM apply";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+                                        
+
 
 
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
-        
+                                            if($row['approval_state'] =='同意')
+                                            {
+
                                             echo '<tr>';
                                             echo '<td>' . $row['book_name'] .  '</td>';
                                             echo '<td>' . $row['book_id'] .  '</td>';
                                             echo '<td>' . $row['ISBN'] .  '</td>';
                                             echo '<td>' . $row['apply_time'] .  '</td>';
-                                            echo ' <td> <a class="btn btn-info" type="submit" value="申请还书" name="reserve" href="return.php?book_id='.$row['book_id'].'">申请还书</a>
-                                                    <input class="btn btn-danger" type="button" value="丢毁反馈" onclick="SearchData()">
+                                            echo ' <td> <a class="btn btn-info" type="submit" value="申请还书" href="return.php?book_id='.$row['book_id'].'">申请还书</a>
+                                                 <td> <a class=" btn btn-danger" type="submit" value="丢毁反馈" href="feedback.php?book_id='.$row['book_id'].'">丢毁反馈</a> 
+                                                   
                                                 </td>';
                                             echo '</tr>';
-
+                                            }
                                         }
                                         ?>
                                         </tbody>  

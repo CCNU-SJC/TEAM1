@@ -78,8 +78,8 @@
                                         <thead>  
                                             <tr>
                                                 <th>书名</th>
-                                                <th>作者</th>
                                                 <th>编号</th>
+                                                <th>ISBN</th>
                                                 <th>借阅时间</th>
                                                 <th>归还时间</th>
                                             </tr>  
@@ -88,7 +88,8 @@
                                             <?php
 
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
-                                        $query = "SELECT * FROM apply";
+                                        $query = "SELECT * FROM apply WHERE apply_type = 'return' and approval_state = 'agree'
+                                        ";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
 
 

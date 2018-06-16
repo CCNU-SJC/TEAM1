@@ -22,6 +22,10 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<link rel="stylesheet" href="css/jPages.css">
+<script src="js/jPages.min.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
@@ -85,7 +89,7 @@
                                                 <th>申请时间</th>
                                             </tr>  
                                         </thead>  
-                                        <tbody>
+                                        <tbody  id="itemContainer">
                                         
 
 
@@ -94,10 +98,13 @@
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
                                         $query = "SELECT * FROM apply";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-
+                                    
+                                        echo "<div class='holder'></div>";
 
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
+                                            
+
                                             if($row['approval_state'] !='agree')
                                             {
                                             echo '<tr>';
@@ -111,7 +118,6 @@
                                             }
                                         }
                                         ?>
-                                       
                                         </tbody>  
                                 </table>  
                         </div>
@@ -138,7 +144,25 @@
      else{
        //当条件不为 true 时执行的代码
        console.log(">1");
-       document.getElementById("num").style.display='none';
-    }
+      document.getElementById("num").style.display='none';
+    } 
 </script>
-</html>
+
+<script>
+
+$(document).ready(function () {
+$("div.holder").jPages({
+containerID: "itemContainer",
+first: '首页',//false为不显示
+previous: '上一页',//false为不显示
+next: '下一页',//false为不显示 自定义按钮
+last: '尾页',//false为不显示
+perPage: 5,
+keyBrowse: true,
+scrollBrowse: true
+});
+});
+
+</script>
+
+ </html>

@@ -13,7 +13,7 @@
     
     $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     
-
+    error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html>

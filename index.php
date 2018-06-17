@@ -3,10 +3,7 @@ session_start();
 require_once("class.user.php");
 $login = new USER();
 
-if($login->is_loggedin()!="")
-{
-    $login->redirect('user-approval.html');
-}
+
 
 if(isset($_POST['btn-login']))
 {

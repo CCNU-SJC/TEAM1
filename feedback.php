@@ -29,13 +29,16 @@
 
     $name = $_POST['name'];
     $ISBN = $_POST['ISBN'];
-    $apply_type = '丢损';
+    $apply_type = "丢损";
+    $approval_state = "待审批";
+     date_default_timezone_set("Asia/Shanghai");
+     $time = date("Y/m/d h:i:s");
 
     if ($_POST){
-      $query = "INSERT INTO apply(book_name,ISBN, book_id,apply_time,apply_type) VALUES('$name','$ISBN','$book_id',now(),'$apply_type')";
-      $query_tw0 = "UPDATE apply SET approval_state = 'verifying' WHERE book_id = $book_id";
+      $query = "INSERT INTO apply(ISBN,name, book_id,apply_time,apply_type,approval_state) VALUES('$ISBN','$name','$book_id','$time','$apply_type','$approval_state')";
+    //  $query_tw0 = "UPDATE book_info SET state = '$state' WHERE book_id = '$book_id'";
       mysqli_query($dbc,$query) or die("error query database". mysqli_error($dbc));
-      mysqli_query($dbc,$query_tw0) or die("error query database". mysqli_error($dbc));
+    //  mysqli_query($dbc,$query_tw0) or die("error query database". mysqli_error($dbc));
       mysqli_close($dbc);
       header('location:'.'user-approval.php');
       exit;

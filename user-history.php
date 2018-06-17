@@ -1,23 +1,3 @@
-<?php
-  session_start();
-    require_once("session.php");
-    
-    require_once("class.user.php");
-    $auth_user = new USER();
-    
-    
-    $user_id = $_SESSION['user_session'];
-    
-    $stmt = $auth_user->runQuery("SELECT * FROM reader WHERE user_id=:user_id");
-    $stmt->execute(array(":user_id"=>$user_id));
-    
-    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-    
-    error_reporting(0);
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,8 +13,6 @@
 <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <!-- 引入bootstrap-table样式 -->
 <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css"  href="css/nav.css" />
 
 <!-- jquery -->
 <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
@@ -52,23 +30,7 @@
                         <a class="navbar-brand" href="/Admin/index.html" id="logo">图书管理系统
                         </a>
                     </div>
-
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle navbar-brand2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span>
-                                </a>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="search-book.php"><span class="glyphicon glyphicon-search"></span>&nbsp;查找图书</a></li>
-                                    <li><a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出登录</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
                 </div>
-
     </div>
     
     <div class="container-fluid">
@@ -125,12 +87,9 @@
                                         <tbody>  
                                             <?php
 
-                                       
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
-                                        $query = "SELECT * FROM apply WHERE apply_type = 'return' and approval_state = 'agree' and user_id='$user_id'
-                                        ";
+                                        $query = "SELECT * FROM user_record WHERE return_time IS NOT NULL";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-
 
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
@@ -139,8 +98,8 @@
                                             echo '<td>' . $row['book_name'] .  '</td>';
                                             echo '<td>' . $row['book_id'] .  '</td>';
                                             echo '<td>' . $row['ISBN'] .  '</td>';
-                                            echo '<td>' . $row['apply_time'] .  '</td>';
-                                            echo '<td>' . $row['operate_time'] .  '</td>';
+                                            echo '<td>' . $row['borrow_time'] .  '</td>';
+                                            echo '<td>' . $row['return_time'] .  '</td>';
 
                                             echo '</tr>';
                                         }

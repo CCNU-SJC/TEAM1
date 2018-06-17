@@ -76,17 +76,15 @@
                                             <form class="form-inline" method="post">  
                                                 <div class="row">  
                                                     <div class="col-sm-4">  
-                                                        <label class="control-label">图书名称：</label>  
-                                                        <input id="txtTitle" type="text" class="form-control" name="name">  
-                                                    </div>  
-                                                    <div class="col-sm-4">  
-                                                        <label class="control-label">图书作者：</label>  
-                                                        <input id="txtAuthor" type="text" class="form-control" name="author">  
-                                                    </div>  
-                                                    <div class="col-sm-4">  
-                                                        <label class="control-label">ISBN：</label>  
-                                                        <input id="txtPublish" type="text" class="form-control" name="ISBN">  
-                                                    </div>  
+                                                      
+                                                 <select name = "select">
+                                                  <option value="name">图书名称</option>
+                                                  <option value="author">图书作者</option>
+                                                  <option value="ISBN">ISBN</option>
+                                                </select>
+                                                    
+                                                <input class="form-control" type="text" name="input" >    
+                           
                                                 </div>  
                                   
                                                 <div class="row text-right" style="margin-top:20px;">  
@@ -99,42 +97,57 @@
                                         </div>  
                                     </div>
 
-
-
-<!-- 管理员搜索功能 !-->                                                                           
+                    <div class="book">                                                                       
+                    <fieldset>
+                            <legend>书库管理</legend>
+                    </fieldset>  
+                    <table class="table table-striped table-hover table-responsive">  
+                        <thead> 
+                        <tr>
+                        <th>编号</th>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>ISBN</th>
+                        <th>出版社</th>
+                        <th>状态</th>
+                        </tr>  
+                        </thead>
+                                
+                                               
 <?php
 
-
 error_reporting(0);
-$name = $_POST['name'];
-$author = $_POST['author'];
-$ISBN = $_POST['ISBN'];
+    
+$select = $_POST['select'];    
+$input = $_POST['input'];
 
-$dbc = mysqli_connect('localhost','root','','book_manager');
-$query = "SELECT * FROM book_info WHERE name = '$name' OR author = '$author' OR ISBN = '$ISBN'";
-$result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
 
-if($_POST) 
-{  
-    if (mysqli_num_rows($result) )
-    {     echo '<div class="book">';
-          echo 
-          '<fieldset>
-          <legend>查询结果</legend>
-          </fieldset> '; 
-          echo '<table class="table table-striped table-hover table-responsive">';
-          echo '<thead> 
-          <tr>
-          <th>图书id</th>
-          <th>书名</th>
-          <th>作者</th>
-          <th>ISBN</th>
-          <th>出版社</th>
-          <th>状态</th>
-          </tr>  
-          </thead>
-          <tbody>
-          ';
+if ($_POST['input']){
+    
+    $dbc = mysqli_connect('localhost','root','','book_manager');
+    //图书名称、作者模糊查询功能
+    if($select == "ISBN" ){
+       $query = "SELECT * FROM book_info WHERE ISBN = '$input'";
+    }
+  else{
+    $query = "SELECT * FROM book_info WHERE $select LIKE '%$input%' ";
+  }
+  //echo $query;
+  $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+}
+
+//获取所有书籍
+else{
+
+  $dbc = mysqli_connect('localhost','root','','book_manager');
+  $query = "SELECT * FROM book_info";
+  $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+
+}
+
+
+    if (mysqli_num_rows($result))
+    {   
           while ($row = mysqli_fetch_array($result)) 
         {
         
@@ -145,63 +158,97 @@ if($_POST)
           echo '<td>' . $row['ISBN'] . '</td>';
           echo '<td>' . $row['press'] . '</td>';
           echo '<td>' . $row['state'] . '</td>';
+          echo '<td><div class="theme-buy">
+             <a  class="btn btn-primary btn-large theme-login" data-ISBN="' .$row['ISBN']. '" href="javascript:;">详情</a>
+                </div></td>';
           echo '<td>
                     <a class="btn btn-info" href="state/delete.php?book_id='.$row['book_id'].'" onclick="javascript:return del();" >下架删除</a>
-                    
                 </td>';
-
 
           echo '</tr>';
           echo "</tbody>";
-         
-
-
-
 
         }
-        
-
         echo '</table>';
         echo '</div>';
 
     }  
     
 
-
-
     else
     {
         echo "<script>alert('无所查图书！');history.go(-1);</script>";  
     }
-}
 
-echo '<div class="theme-popover" style="display: none;">
-             <div class="theme-poptit">
-                  <a href="javascript:;" title="关闭" class="close">×</a>
-                  <h3>图书详情</h3>
-             </div>
-             <div class="theme-popbod dform">
-                   <form class="theme-signin" name="loginform" action="" method="post">
-                        <ul>
-                             <li><strong>书名：' .$row["name"].'</strong></li>
-                             <li><strong>作者：' .$row["author"].'</strong></li>
-                             <li><strong>ISBN：' .$row["ISBN"].'</strong></li>
-                             <li><strong>编号：' .$row["book_id"].'</strong></li>
-                             <li><strong>出版社：'.$row["press"].'</strong></li>
-                             <li><strong>图书简介：'.$row["introduction"].'</strong><small></small></li>
-                         </ul>
-                   </form>
-            </div>
-    </div>
-         
-    <div class="theme-popover-mask" style="display: none;"></div>';
 
 
 ?>
 
 
 
+<div class="theme-popover" style="display: none;">
+             <div class="theme-poptit">
+                  <a href="javascript:;" title="关闭" class="close">×</a>
+                  <h3>图书详情</h3>  
+             </div>
+             
+            <div id="api_content6"></div>
+            <div class="theme-popbod dform">
+                <form class="theme-signin" name="loginform" action="" method="post">
+                   <ul>
 
+                      <li><strong>书名：</strong><small id="api_content1"></small></li>
+                      <li><strong>作者:</strong><small id="api_content2"></small></li>
+                      <li><strong>ISBN：</strong><small id="api_content3"></small></li>
+                      <li><strong>出版社:</strong><small id="api_content4"></small></li>
+                      <li><strong>图书简介:</strong><small><textarea id="api_content5"></textarea></small></li>
+
+                   </ul>
+                </form>
+            </div> 
+
+    </div>
+         
+    <div class="theme-popover-mask" style="display: none;"></div>
+
+ <script>
+
+            jQuery(document).ready(function($) {
+                    $('.theme-login').click(function(){
+                        $('.theme-popover-mask').fadeIn(100);
+                        $('.theme-popover').slideDown(200);
+                  
+                         var isbn=$(this).attr("data-isbn")
+                         var url = "https://api.douban.com/v2/book/isbn/:" + isbn;
+                    $.ajax({
+                    url: url, 
+                    dataType:'jsonp',
+                    type:'get',
+                     success:function(data){
+                        $("#api_content1").append(data.title);
+                        $("#api_content2").append(data.author[0]);
+                        $("#api_content3").append(data.isbn13);
+                        $("#api_content4").append(data.publisher);
+                        $("#api_content5").append(data.summary);
+                        $("#api_content6").append("<img src=" +data.image+">");
+                    }
+                  })
+                });
+
+                    $('.theme-poptit .close').click(function(){
+                        $('.theme-popover-mask').fadeOut(100);
+                        $('.theme-popover').slideUp(200);
+                        $("#api_content1").empty();
+                        $("#api_content2").empty();
+                        $("#api_content3").empty();
+                        $("#api_content4").empty();
+                        $("#api_content5").empty();
+                        $("#api_content6").empty();
+                    })
+            })
+
+            
+ </script>
 
 
 
@@ -231,53 +278,6 @@ echo '<div class="theme-popover" style="display: none;">
     }
 </script>
 
-<!--书库管理!-->
-<div class ="book">
-                                    <!--<table id="table"></table>--> 
-                                    <fieldset>
-                                            <legend>书库管理</legend>
-                                    </fieldset>  
-                                    <table class="table table-striped table-hover table-responsive">  
-                                            <thead> 
-                                             <?php
-                                               
-                                               $dbc = mysqli_connect('localhost','root','','book_manager');
-                                               $query = "SELECT * FROM book_info ORDER BY book_id DESC";
-                                               $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-
-                                               if (!mysqli_num_rows($result) ){
-                                                    echo '<p>目前暂无书籍……</p>';
-                                                    echo '</thead>';}                                               
-                                                else{
-                                                echo '<tr>
-                                                    <th>图书id</th>
-                                                    <th>书名</th>
-                                                    <th>作者</th>
-                                                    <th>ISBN</th>
-                                                    <th>出版社</th>
-                                                    <th>状态</th>
-                                                    </tr>  
-                                                    </thead>';  
-                                                 while ($row = mysqli_fetch_array($result)) {
-                                                    echo '<tbody>';
-                                                    echo '<tr>';
-                                                    echo '<td>' . $row['book_id'] .  '</td>'; 
-                                                    echo '<td>' . $row['name'] .  '</td>';
-                                                    echo '<td>' . $row['author'] .  '</td>';
-                                                    echo '<td>' . $row['ISBN'] .  '</td>';      
-                                                    echo '<td>' . $row['press'] .  '</td>'; 
-                                                    echo '<td>' . $row['state'] .  '</td>';  
-                                                    echo '<td>
-                                                        <a class="btn btn-info" href="state/delete.php?book_id='.$row['book_id'].'" onclick="javascript:return del();" >下架删除</a>
-                                                        </td>';
-                                                    echo '</tr>';   
-                                                    echo ' </tbody> '; 
-                                        }}
-                                        ?> 
-                                 </thead>
-                                    </table>
-                                </div>  
-    
 </body>
 
 <script>

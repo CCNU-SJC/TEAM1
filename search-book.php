@@ -1,7 +1,3 @@
-<?php
-error_reporting(0);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +15,6 @@ error_reporting(0);
 <!-- 引入bootstrap-table样式 -->
 <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css"  href="css/nav.css" />
-
 <!-- jquery -->
 <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -35,21 +29,6 @@ error_reporting(0);
         <div class="navbar-header">
             <a class="navbar-brand" href="./index.html" id="logo">图书管理系统</a>
         </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle navbar-brand2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['user_name']; ?>&nbsp;<span class="caret"></span>
-                                </a>
-                                 <ul class="dropdown-menu">
-                                    <li><a href="search-book.php"><span class="glyphicon glyphicon-search"></span>&nbsp;查找图书</a></li>
-                                    <li><a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出登录</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
    </div>
 <div class="bg">
    <div class="container body-content">
@@ -59,17 +38,15 @@ error_reporting(0);
                     <form class="form-inline" method="post">  
                         <div class="row" >  
                             <div class=" col-md-4">  
-                                <label class="control-label">图书名称：</label>  
-                                <input id="txtTitle" type="text" class="form-control" name="name"> 
-                            </div>
-                            <div class=" col-md-4" >
-                                <label class="control-label">图书作者：</label>  
-                                <input id="txtAuthor" type="text" class="form-control" name="author">  
-                            </div> 
-                            <div class=" col-md-4"> 
-                                <label class="control-label">ISBN：</label>  
-                                <input id="txtISBN" type="text" class="form-control" name="ISBN">  
-                            </div>  
+
+                             <select name = "select">
+					    		<option value="name">图书名称</option>
+					    		<option value="author">图书作者</option>
+					    		<option value="ISBN">ISBN</option>
+					    	</select>
+                                
+                            <input class="form-control" type="text" name="input" >    
+                           
                         </div>  
                         
           
@@ -84,29 +61,12 @@ error_reporting(0);
         </div> 
    </div>
 
-
-<?php
-
-error_reporting(0);
-    
-$name = $_POST['name'];
-$author = $_POST['author'];
-$ISBN = $_POST['ISBN'];
-
-$dbc = mysqli_connect('localhost','root','','book_manager');
-$query = "SELECT * FROM book_info WHERE name = '$name' OR author = '$author' OR ISBN = '$ISBN'";
-$result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-
-if(($_POST['search'])) 
-{  
-    if (mysqli_num_rows($result) )
-    {     echo '<div class="container book">';
-          echo 
-          '<fieldset>
+     <div class="container book">
+          <fieldset>
           <legend>查询结果</legend>
-          </fieldset> '; 
-          echo '<table class="table table-striped table-hover table-responsive">';
-          echo '<thead> 
+          </fieldset>
+          <table class="table table-striped table-hover table-responsive">
+          <thead> 
           <tr>
           <th>书名</th>
           <th>作者</th>
@@ -115,8 +75,42 @@ if(($_POST['search']))
           <th>状态</th>
           </tr>  
           </thead>
-          </tbody>
-          ';
+
+
+<?php
+
+error_reporting(0);
+    
+$select = $_POST['select'];    
+$input = $_POST['input'];
+
+
+if ($_POST['input']){
+    
+    $dbc = mysqli_connect('localhost','root','','book_manager');
+    //图书名称、作者模糊查询功能
+    if($select == "ISBN" ){
+       $query = "SELECT * FROM book_info WHERE ISBN = '$input'";
+    }
+	else{
+		$query = "SELECT * FROM book_info WHERE $select LIKE '%$input%' ";
+	}
+	//echo $query;
+	$result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+}
+
+//获取所有书籍
+else{
+
+	$dbc = mysqli_connect('localhost','root','','book_manager');
+	$query = "SELECT * FROM book_info";
+	$result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+
+}
+
+
+    if (mysqli_num_rows($result))
+    {   
           while ($row = mysqli_fetch_array($result)) 
         {
         
@@ -130,7 +124,7 @@ if(($_POST['search']))
                 <a  class="btn btn-primary btn-large theme-login" data-ISBN="' .$row['ISBN']. '" href="javascript:;">详情</a>
                 </div></td>';
            
-            if($row['state']=='可借')
+            if($row['state']=='在架上')
             {
                 echo '<td><div class="theme-buy">
                                 
@@ -162,7 +156,6 @@ if(($_POST['search']))
     {
         echo "<script>alert('无所查图书！');history.go(-1);</script>";  
     }
-}
 
 
 ?>

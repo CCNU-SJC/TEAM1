@@ -107,7 +107,7 @@
                                                     echo '<td>' . $row['apply_time'] . '</td>';
                                                     echo '<td>' . $row['reason'] . '</td>';
                                                     echo '<td>';
-                                                    if ($row['apply_type'] == "丢失损毁"){
+                                                    if ($row['apply_type'] == "丢损"){
                                                        echo '<a class="btn btn-warning" href="state/undercarriage.php?id='.$row['id'].'">检查下架</a>';
                                                     } 
                                                     else{

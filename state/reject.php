@@ -1,7 +1,7 @@
 <?php
   $id = $_GET['id'];
   date_default_timezone_set("Asia/Shanghai");
-  $time = date("Y/m/d h:i");
+  $time = date("Y/m/d h:i:s");
   $approval_state = "不通过";
 
   $dbc = mysqli_connect('localhost','root','','book_manager');

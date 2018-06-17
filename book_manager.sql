@@ -5,7 +5,7 @@ CREATE DATABASE book_manager;
 CREATE TABLE `admin` (
   `admin_id` int(10) PRIMARY KEY AUTO_INCREMENT,
   `admin_name` varchar(15) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `password` varchar(128) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -14,7 +14,7 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `apply` (
   `id` int(10) PRIMARY KEY AUTO_INCREMENT,
-  `book_name` varchar(10) NOT NULL,
+  `name` varchar(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   `apply_type` varchar(10) NOT NULL,
   `book_id` int(10) NOT NULL,
@@ -64,11 +64,11 @@ CREATE TABLE `reader` (
 CREATE TABLE `user_record` (
   `id` int(10) PRIMARY KEY AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
+   `book_id` int(10) NOT NULL,
   `ISBN` varchar(20) NOT NULL,
   `book_name` varchar(50) NOT NULL,
-  `author` varchar(30) NOT NULL,
-  `borrow_time` int(11) NOT NULL,
-  `return_time` int(11) NOT NULL ,
+  `borrow_time` datetime NOT NULL,
+  `return_time` datetime DEFAULT NULL ,
   FOREIGN KEY (id) REFERENCES reader(user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

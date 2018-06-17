@@ -95,6 +95,7 @@ if(isset($_POST['btn-login']))
     outline: none;">
     <i class="glyphicon glyphicon-log-in"></i> &nbsp;管理员登录
     </a>
+    <label>Don't have account yet ! <a href="sign-up.php">Sign Up</a></label>
         </div>
         <div class="copyright">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
   </div>

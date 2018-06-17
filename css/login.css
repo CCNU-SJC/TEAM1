@@ -22,14 +22,6 @@ a {
 	text-decoration:none; 
 	cursor:pointer; 
 }
-/*通用*/
-a:hover{
-    text-decoration: none;
-}
-
-.change:hover{
-	text-decoration: none;
-}
 
 img{ 
 	border:none;
@@ -130,26 +122,35 @@ input[type=submit], input[type=button] {
 	-webkit-appearance: none; 
 	outline:none; width:100%; 
 }
-.change{
-	width:100%;     
-	display: inline-block;
-    vertical-align: middle;
-    padding: 12px 24px;
-    margin: 0px;
-    margin-top:10px;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #3c4553;
-    border-radius: 3px;
-    border: none;
-    text-decoration:none; 
-    outline: none;
+
+.login-button { 
+	display: inline-block; 
+	vertical-align: middle;
+	padding: 12px 24px; 
+	margin: 0px; 
+	font-size:16px; 
+	line-height: 24px; 
+	text-align: center; 
+	white-space: nowrap; 
+	vertical-align: middle; 
+	cursor: pointer; 
+	color: #ffffff; 
+	background-color: #27A9E3; 
+	border-radius: 3px; 
+	border: none; 
+	-webkit-appearance: none; 
+	outline:none; width:100%; 
 }
+
+.false{
+	margin-top: 75px;
+	padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+
 .copyright { 
 	font-size:14px; 
 	color: #444;
@@ -176,3 +177,31 @@ input[type=submit], input[type=button] {
 }
 
 
+
+
+.login-button { 
+	display: inline-block; 
+	vertical-align: middle;
+	padding: 12px 24px; 
+	margin: 0px; 
+	font-size:16px; 
+	line-height: 24px; 
+	text-align: center; 
+	white-space: nowrap; 
+	vertical-align: middle; 
+	cursor: pointer; 
+	color: #ffffff; 
+	background-color: #27A9E3; 
+	border-radius: 3px; 
+	border: none; 
+	-webkit-appearance: none; 
+	outline:none; width:100%; 
+}
+
+.false{
+	margin-top: 75px;
+	padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

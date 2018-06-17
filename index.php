@@ -12,7 +12,7 @@ if(isset($_POST['btn-login']))
         
     if($login->doLogin($user_name,$password))
     {
-        $login->redirect('user-approval.html');
+        $login->redirect('search-book.php');
     }
     else
     {

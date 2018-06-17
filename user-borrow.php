@@ -1,3 +1,20 @@
+<?php
+  session_start();
+    require_once("session.php");
+    
+    require_once("class.user.php");
+    $auth_user = new USER();
+    
+    
+    $user_id = $_SESSION['user_session'];
+    
+    $stmt = $auth_user->runQuery("SELECT * FROM reader WHERE user_id=:user_id");
+    $stmt->execute(array(":user_id"=>$user_id));
+    
+    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+    
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +105,7 @@
                                         <?php
 
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
-                                        $query = "SELECT * FROM apply";
+                                        $query = "SELECT * FROM apply WHERE user_id='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
                                         
 

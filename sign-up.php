@@ -29,7 +29,7 @@ if(isset($_POST['btn-signup']))
 			$row=$stmt->fetch(PDO::FETCH_ASSOC);
 				
 			if($row['user_name']==$user_name) {
-				$error[] = "sorry username already taken !";
+				$error[] = "对不起，您的用户名已被注册 !";
 			}
 			else
 			{
@@ -46,64 +46,91 @@ if(isset($_POST['btn-signup']))
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+
+<!Doctype html>
+<html>
 <head>
+<title>用户信息注册</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coding Cage : Sign up</title>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="style.css" type="text/css"  />
+<meta name="keywords" content="Validation Signup Form Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- fonts -->
+<link href="http://fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet">
+<!-- /fonts -->
+<!-- css -->
+<link href="css/bootstrap.css" rel="stylesheet" type='text/css' media="all" />
+<link href="css/signup.css" rel="stylesheet" type='text/css' media="all" />
+<!-- /css -->
 </head>
 <body>
+<h1 class="w3ls">图书管理系统-用户注册</h1>
+<div class="content" style="min-height: 495px;">
+	<div class="content-agileits" style="margin-top: 50px;">
 
-<div class="signin-form">
+		<form  method="post" class="form-signin" data-toggle="validator" role="form">
 
-<div class="container">
-    	
-        <form method="post" class="form-signin">
-            <h2 class="form-signin-heading">Sign up.</h2><hr />
-            <?php
+		<?php
 			if(isset($error))
 			{
 			 	foreach($error as $error)
 			 	{
-					 ?>
+		?>
                      <div class="alert alert-danger">
                         <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
                      </div>
-                     <?php
+        <?php
 				}
 			}
 			else if(isset($_GET['joined']))
 			{
-				 ?>
+		?>
                  <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
+                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; 注册成功！ <a href='index.php'>登录</a> 
                  </div>
-                 <?php
+        <?php
 			}
-			?>
-            <div class="form-group">
-            <input type="text" class="form-control" name="txt_user_name" placeholder="Enter Username" value="<?php if(isset($error)){echo $user_name;}?>" />
-            </div>
+	    ?>
 
-            <div class="form-group">
-            	<input type="password" class="form-control" name="txt_password" placeholder="Enter Password" />
+			<div class="form-group agileinfo wthree w3-agileits agile">
+				<label for="username" class="control-label">用户名</label>
+				<input type="text" class="form-control" name="txt_user_name" id="username" placeholder="请输入用户名"  value="<?php if(isset($error)){echo $user_name;}?>" data-error="请输入您的用户名" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="control-label">密码</label>
+				<div class="form-inline row">
+					<div class="form-group col-sm-6">
+						<input type="password" data-minlength="6" class="form-control"  name="txt_password" id="inputPassword" placeholder="请输入6位密码" required>
+						<div class="help-block">最少请输入6位数字</div>
+					</div>
+					<div class="form-group col-sm-6 w3-agile">
+						<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="您的输入不匹配" placeholder="确认输入" required>
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="submit" name="btn-signup" class="btn btn-lg">Submit</button>
+			</div>
+			<div class="text-center alert alert-success">
+                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; 已有账号！ <a href='index.php'>请登录</a> 
             </div>
-            <div class="clearfix"></div><hr />
-            <div class="form-group">
-            	<button type="submit" class="btn btn-primary" name="btn-signup">
-                	<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
-                </button>
-            </div>
-            <br />
-            <label>have an account ! <a href="index.php">Sign In</a></label>
-        </form>
-       </div>
+		</form>
+	</div>
 </div>
-
-</div>
-
+<div class="copyright" style="
+    background-color: #ccc;
+    text-align: center;
+    height: 30px;
+    padding-top: 5px;">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
+<!-- js files -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/validator.min.js"></script>
+<!-- /js files -->
 </body>
 </html>

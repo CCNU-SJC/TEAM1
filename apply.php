@@ -20,10 +20,11 @@
 
     error_reporting(0);
     $book_id = $_GET['book_id'];
+    $user_id = $_GET['user_id'];
 
 //get the infomation of the book
     $dbc = mysqli_connect('localhost','root','','book_manager');
-    $query = "SELECT * FROM book_info WHERE book_id = $book_id";
+    $query = "SELECT * FROM book_info WHERE book_id = '$book_id'";
     $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
     $row = mysqli_fetch_array($result);
 
@@ -36,11 +37,12 @@
      $state = "待借";
 
     if ($_POST){
-      $query = "INSERT INTO apply(ISBN,name, book_id,apply_time,apply_type,approval_state) VALUES('$ISBN','$name','$book_id','$time','$apply_type','$approval_state')";
+      $query = "INSERT INTO apply(user_id,ISBN,name, book_id,apply_time,apply_type,approval_state) VALUES('$user_id','$ISBN','$name','$book_id','$time','$apply_type','$approval_state')";
       $query_tw0 = "UPDATE book_info SET state = '$state' WHERE book_id = '$book_id'";
       mysqli_query($dbc,$query) or die("error query database". mysqli_error($dbc));
       mysqli_query($dbc,$query_tw0) or die("error query database". mysqli_error($dbc));
       mysqli_close($dbc);
+
       header('location:'.'user-approval.php');
       exit;
     }

@@ -51,7 +51,7 @@ CREATE TABLE `reader` (
   `user_id` int(10) PRIMARY KEY AUTO_INCREMENT,
   `user_name` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
-  `register_day` date NOT NULL,
+  `register_day` date NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_state` tinyint(1) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

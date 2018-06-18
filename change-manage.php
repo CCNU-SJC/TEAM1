@@ -38,7 +38,7 @@
                 </div>
     </div>
     
-    <div class="container-fluid">
+    <div style="min-height: 680px;" class="container-fluid">
                 <div class="row">
                     <div id="nav-up" class="col-md-2">
                         <ul id="main-nav" class="nav nav-tabs nav-stacked" >
@@ -187,6 +187,11 @@
                     </div>
                 </div>
     </div>
+    <div class="copyright" style="
+    background-color: #ccc;
+    text-align: center;
+    height: 30px;
+    padding-top: 5px;">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
     
 </body>
 <script>

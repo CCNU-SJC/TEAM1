@@ -20,7 +20,7 @@
         #main-nav.nav-tabs.nav-stacked > li.change > a{
 			color: #FFF;
 			background: #3C4049;
-			background: -moz-linear-gradient(top, #ccc 0%,#ddd 100%);
+			background: -moz-linear-gradient(top, rgb(109, 109, 109) 0%,#ddd 100%);
 			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ccc), color-stop(100%,#ddd));
 			background: -webkit-linear-gradient(top, #ccc 0%,#ddd 100%);
 			background: -o-linear-gradient(top, #ccc 0%,#ddd 100%);
@@ -28,7 +28,8 @@
 			background: linear-gradient(top, #ccc 0%,#ddd 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049');
 			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049')";
-		}
+        }
+        
 
             #main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover > span {
                 color: #FFF;

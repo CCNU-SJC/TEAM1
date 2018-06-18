@@ -50,7 +50,7 @@
                 </div>
     </div>
     
-    <div class="container-fluid">
+    <div style="min-height: 680px;"class="container-fluid">
                 <div class="row">
                     <div id="nav-up" class="col-md-2">
                         <ul id="main-nav" class="nav nav-tabs nav-stacked" >
@@ -82,6 +82,13 @@
                                     管理用户信息
                                 </a>
                             </li>
+
+                            <li class="change1">
+                                <a href="./sign-up.php">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    用户信息注册
+                                </a>
+                            </li>
         
                         </ul>
                     </div>
@@ -111,7 +118,7 @@
                                                 </thead>  
                                                
                                                 <tbody id="itemContainer">  
-                                                echo "<div class='holder'></div>";
+                                                <div class="holder"></div>
 
                                                 <tr>';
                                              while ($row = mysqli_fetch_array($result)){    
@@ -135,6 +142,12 @@
                     </div>
                 </div>
     </div>
+
+    <div class="copyright" style="
+    background-color: #ccc;
+    text-align: center;
+    height: 30px;
+    padding-top: 5px;">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
     
 </body>
 

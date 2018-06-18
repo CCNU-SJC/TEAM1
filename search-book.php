@@ -37,9 +37,9 @@
                 <div class="panel-body">  
                     <form class="form-inline" method="post">  
                         <div class="row" >  
-                            <div class=" col-md-4">  
+                            <div class="text-right col-md-4">  
 
-                             <select name = "select">
+                             <select style=height:32px; name = "select">
 					    		<option value="name">图书名称</option>
 					    		<option value="author">图书作者</option>
 					    		<option value="ISBN">ISBN</option>
@@ -61,9 +61,9 @@
         </div> 
    </div>
 
-     <div class="container book">
+     <div class="book">
           <fieldset>
-          <legend>查询结果</legend>
+          <legend>书籍浏览</legend>
           </fieldset>
           <table class="table table-striped table-hover table-responsive">
           <thead> 
@@ -161,7 +161,6 @@ else{
 ?>
 </div>
 
-<!--对如何在详情页中显示数据库数据存在疑问 -->
 
 <div class="theme-popover" style="display: none;">
              <div class="theme-poptit">
@@ -187,6 +186,11 @@ else{
     </div>
          
     <div class="theme-popover-mask" style="display: none;"></div>
+    <div class="copyright" style="
+    background-color: #ccc;
+    text-align: center;
+    height: 30px;
+    padding-top: 5px;">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
 
  <script>
 

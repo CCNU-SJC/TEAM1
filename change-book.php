@@ -68,19 +68,20 @@
                                     管理用户信息
                                 </a>
                             </li>
+                            
         
                         </ul>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                             <div class="container body-content" style="padding-top:20px;">  
                                     <div class="panel panel-default">  
                                         <div class="panel-heading">查询条件</div>  
                                         <div class="panel-body">  
                                             <form class="form-inline" method="post">  
                                                 <div class="row">  
-                                                    <div class="col-sm-4">  
+                                                    <div class="col-sm-4 row text-right">  
                                                       
-                                                 <select name = "select">
+                                                 <select style=height:32px; name = "select">
                                                   <option value="name">图书名称</option>
                                                   <option value="author">图书作者</option>
                                                   <option value="ISBN">ISBN</option>
@@ -88,9 +89,9 @@
                                                     
                                                 <input class="form-control" type="text" name="input" >    
                            
-                                                </div>  
+                                                   </div>  
                                   
-                                                <div class="row text-right" style="margin-top:20px;">  
+                                                <div class="row text-right" style="margin-top:20px; margin-right:1em;">  
                                                     <div class="col-sm-12">  
                                                         <input class="btn btn-primary" type="submit" value="查询" onclick="SearchData()">  
                                                         <button class="btn btn-success" type="button"><a style='color:rgb(255, 255, 255)' href="./create-book.php">创建新书</a></button>  
@@ -99,8 +100,9 @@
                                             </form>  
                                         </div>  
                                     </div>
+                            </div>
 
-                    <div class="book">                                                                       
+                <div class="book">                                                                       
                     <fieldset>
                             <legend>书库管理</legend>
                     </fieldset>  
@@ -192,7 +194,7 @@ else{
 
 
 ?>
-
+</div>
 
 
 <div class="theme-popover" style="display: none;">
@@ -216,9 +218,15 @@ else{
                 </form>
             </div> 
 
-    </div>
+</div>
          
-    <div class="theme-popover-mask" style="display: none;"></div>
+<div class="theme-popover-mask" style="display: none;"></div>
+
+    
+
+
+</body>
+    
 
  <script>
 
@@ -287,7 +295,8 @@ else{
     }
 </script>
 
-</body>
+
+
 
 <script>
     function del() {

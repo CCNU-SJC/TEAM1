@@ -52,7 +52,7 @@
         </div>
    </div>
 <div class="bg">
-   <div class="container body-content">
+   <div class="container body-content" style="min-height:680px;">
         <div class="panel panel-default">  
                 <div class="panel-heading">查找图书</div>  
                 <div class="panel-body">  
@@ -148,9 +148,7 @@ else{
             if($row['state']=='在架上')
             {
                 echo '<td><div class="theme-buy">
-                                
-                <a class="btn btn-info" type="submit" value="申请借书" name="reserve" href="apply.php? book_id='.$row['book_id'].'">申请借书</a>
-                
+                <a class="btn btn-info" type="submit" value="申请借书" name="reserve" href="apply.php? book_id='.$row['book_id'].'&user_id='.$userRow['user_id'].'">申请借书</a>
                 </div></td>';
             }
             else

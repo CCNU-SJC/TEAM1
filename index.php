@@ -76,7 +76,8 @@ if(isset($_POST['btn-login']))
                 </div>
 
             </form>
-            <a href="admin-login.php" style="width:100%;     display: inline-block;
+            <a href="admin-login.php" >
+<!--     style="width:100%;     display: inline-block;
     vertical-align: middle;
     padding: 12px 24px;
     margin: 0px;
@@ -92,10 +93,8 @@ if(isset($_POST['btn-login']))
     border-radius: 3px;
     border: none;
     text-decoration:none; 
-    outline: none;">
-    <i class="glyphicon glyphicon-log-in"></i> &nbsp;管理员登录
-    </a>
-    <label>Don't have account yet ! <a href="sign-up.php">Sign Up</a></label>
+    outline: none;" -->
+    <i class="glyphicon glyphicon-log-in"></i> &nbsp;管理员登录</a>
         </div>
         <div class="copyright">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
   </div>

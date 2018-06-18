@@ -67,9 +67,14 @@ if(isset($_POST['btn-signup']))
 <!-- /css -->
 </head>
 <body>
-<h1 class="w3ls">图书管理系统-用户注册</h1>
+<div class="navbar navbar-duomi navbar-static-top" role="navigation">
+        <div class="navbar-header">
+            <div class="navbar-brand" id="logo">图书管理系统</div>           
+		</div> 
+</div>
+<h1 class="w3ls">用户注册</h1>
 <div class="content" style="min-height: 495px;">
-	<div class="content-agileits" style="margin-top: 50px;">
+	<div class="content-agileits">
 
 		<form  method="post" class="form-signin" data-toggle="validator" role="form">
 
@@ -114,7 +119,7 @@ if(isset($_POST['btn-signup']))
 				</div>
 			</div>
 			<div class="form-group">
-				<button type="submit" name="btn-signup" class="btn btn-lg">Submit</button>
+				<button type="submit" name="btn-signup" class="btn btn-lg">注册</button>
 			</div>
 			<div class="text-center alert alert-success">
                       <i class="glyphicon glyphicon-log-in"></i> &nbsp; 已有账号！ <a href='index.php'>请登录</a> 

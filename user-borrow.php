@@ -1,3 +1,19 @@
+<?php
+//获取用户权限
+    require_once("session.php");
+    
+    require_once("class.user.php");
+    $auth_user = new USER();
+    
+    
+    $user_id = $_SESSION['user_session'];
+    
+    $stmt = $auth_user->runQuery("SELECT * FROM reader WHERE user_id=:user_id");
+    $stmt->execute(array(":user_id"=>$user_id));
+    
+    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +47,10 @@
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/Admin/index.html" id="logo">图书管理系统
-                        </a>
+                        <div class="navbar-brand" id="logo">图书管理系统
+                        </div>
+                          <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['user_name']; ?>&nbsp;</a>
+                         <a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a>
                     </div>
                 </div>
     </div>
@@ -90,9 +108,9 @@
                                         <tbody  id="itemContainer">  
                                         
                                         <?php
-
+                                        $user_id = $userRow['user_id'];
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
-                                        $query = "SELECT * FROM user_record WHERE return_time IS NULL";
+                                        $query = "SELECT * FROM user_record WHERE return_time IS NULL AND user_id ='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
                                             
                                         echo "<div class='holder'></div>";

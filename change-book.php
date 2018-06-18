@@ -20,6 +20,9 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    
+<link rel="stylesheet" href="css/jPages.css">
+<script src="js/jPages.min.js"></script>
 
 </head>
 
@@ -112,6 +115,9 @@
                         <th>状态</th>
                         </tr>  
                         </thead>
+                        
+                        <tbody  id="itemContainer">
+
                                 
                                                
 <?php
@@ -142,6 +148,9 @@ else{
   $dbc = mysqli_connect('localhost','root','','book_manager');
   $query = "SELECT * FROM book_info";
   $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+  
+  <div class='holder'></div>";
+
 
 }
 
@@ -293,7 +302,18 @@ else{
 </script>
 
 <script>
-
-
+$(document).ready(function () {
+$("div.holder").jPages({
+containerID: "itemContainer",
+first: '首页',//false为不显示
+previous: '上一页',//false为不显示
+next: '下一页',//false为不显示 自定义按钮
+last: '尾页',//false为不显示
+perPage: 5,
+keyBrowse: true,
+scrollBrowse: true
+});
+});
 </script>
+
 </html>

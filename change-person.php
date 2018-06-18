@@ -1,3 +1,19 @@
+<?php
+//+php
+  require_once("admin_session.php");
+  
+  require_once("class.admin.php");
+  $auth_user = new ADMIN();
+  
+  
+  $admin_id = $_SESSION['admin_session'];
+  
+  $stmt = $auth_user->runQuery("SELECT * FROM admin WHERE admin_id=:admin_id");
+  $stmt->execute(array(":admin_id"=>$admin_id));
+  
+  $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,9 +59,15 @@
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/Admin/index.html" id="logo">
+                        <div class="navbar-brand" id="logo">
                             图书管理系统
-                        </a>
+                        </div>
+                          <!--+html-->
+                         <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['admin_name']; ?>&nbsp;
+                       </a>
+                       <a href="logout.php?logout=true">
+                        <span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out
+                      </a>
                     </div>
                 </div>
     </div>

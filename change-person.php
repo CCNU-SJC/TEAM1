@@ -22,6 +22,10 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    
+<link rel="stylesheet" href="css/jPages.css">
+<script src="js/jPages.min.js"></script>
+    
 </head>
 <style>
 .btn-default {
@@ -105,7 +109,10 @@
                                                         <th>创建时间</th>
                                                     </tr>  
                                                 </thead>  
-                                                <tbody>  
+                                               
+                                                <tbody id="itemContainer">  
+                                                echo "<div class='holder'></div>";
+
                                                 <tr>';
                                              while ($row = mysqli_fetch_array($result)){    
                                               echo '<td>'.$row['user_name'] .'</td>';
@@ -130,4 +137,20 @@
     </div>
     
 </body>
-</html>
+
+<script>
+$(document).ready(function () {
+$("div.holder").jPages({
+containerID: "itemContainer",
+first: '首页',//false为不显示
+previous: '上一页',//false为不显示
+next: '下一页',//false为不显示 自定义按钮
+last: '尾页',//false为不显示
+perPage: 5,
+keyBrowse: true,
+scrollBrowse: true
+});
+});
+</script>
+
+ </html>

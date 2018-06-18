@@ -149,7 +149,7 @@ else{
   $query = "SELECT * FROM book_info";
   $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
   
-  <div class='holder'></div>";
+  echo"<div class='holder'></div>";
 
 
 }

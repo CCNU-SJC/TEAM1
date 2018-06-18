@@ -133,8 +133,8 @@
                                             echo '<td>' . $row['book_id'] .  '</td>';
                                             echo '<td>' . $row['ISBN'] .  '</td>';
                                             echo '<td>' . $row['borrow_time'] .  '</td>';
-                                            echo ' <td> <a class="btn btn-info" type="submit" value="申请还书" href="return.php?book_id='.$row['book_id'].'">申请还书</a>
-                                                 <td> <a class=" btn btn-danger" type="submit" value="丢毁反馈" href="feedback.php?book_id='.$row['book_id'].'">丢毁反馈</a> 
+                                         echo ' <td> <a class="btn btn-info" type="submit" value="申请还书" href="return.php?book_id='.$row['book_id'].'&user_id='.$userRow['user_id'].'">申请还书</a>
+                                                 <td> <a class=" btn btn-danger" type="submit" value="丢毁反馈" href="feedback.php?book_id='.$row['book_id'].'&user_id='.$userRow['user_id'].'">丢毁反馈</a> 
                                                    
                                                 </td>';
                                             echo '</tr>';

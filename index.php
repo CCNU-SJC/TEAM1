@@ -76,7 +76,7 @@ if(isset($_POST['btn-login']))
                 </div>
 
             </form>
-            <a href="admin-login.html" style="width:100%;     display: inline-block;
+            <a href="admin-login.php" style="width:100%;     display: inline-block;
     vertical-align: middle;
     padding: 12px 24px;
     margin: 0px;

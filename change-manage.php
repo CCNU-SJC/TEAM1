@@ -22,6 +22,10 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    
+<link rel="stylesheet" href="css/jPages.css">
+<script src="js/jPages.min.js"></script>    
+
 </head>
 
 <body>
@@ -96,8 +100,12 @@
                                                     <th>申请时间</th>
                                                   </tr>  
                                                     </thead>
+                                                    
                                                     <tbody id="apply_type">';
-                                                     while ($row = mysqli_fetch_array($result)) {
+                                                    echo "<div class='holder'></div>";
+
+                                                    
+                                                    while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
                                                     echo '<td>' . $row['user_id'] .  '</td>';
                                                     echo '<td>' . $row['apply_type'] .  '</td>';
@@ -153,7 +161,10 @@
                                             <th>操作时间</th>
                                         </tr>  
                                     </thead>  
-                                    <tbody>  ';
+                                   
+                                    <tbody id="itemContainer">  ';
+                                    echo "<div class='holder'></div>";
+
                                     while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
                                                     echo '<td>' . $row['user_id'] .  '</td>';
@@ -197,4 +208,20 @@
        document.getElementById("num").style.display='none';
     }
 </script>
-</html>
+    
+<script>
+$(document).ready(function () {
+$("div.holder").jPages({
+containerID: "apply_type","itemContainer",
+first: '首页',//false为不显示
+previous: '上一页',//false为不显示
+next: '下一页',//false为不显示 自定义按钮
+last: '尾页',//false为不显示
+perPage: 5,
+keyBrowse: true,
+scrollBrowse: true
+});
+});
+</script>
+
+ </html>

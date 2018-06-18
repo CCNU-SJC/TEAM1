@@ -85,7 +85,6 @@ if(isset($_POST['btn-login']))
     vertical-align: middle;
     padding: 12px 24px;
     margin: 0px;
-    margin-top:10px;
     font-size: 16px;
     line-height: 24px;
     text-align: center;

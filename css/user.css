@@ -109,3 +109,12 @@ input.clean.btn.btn-success{
 a:hover{
     text-decoration: none;
 }
+
+.nav-information{
+	float: right;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+	line-height: 20px;
+	color: rgb(255, 255, 255);
+}

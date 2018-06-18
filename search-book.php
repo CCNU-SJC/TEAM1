@@ -43,10 +43,12 @@
 <body>
    <div class="navbar navbar-duomi navbar-static-top" role="navigation">
         <div class="navbar-header">
-            <div class="navbar-brand" id="logo">图书管理系统</div>
-            <!--+信息-->          
-              <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['user_name']; ?>&nbsp;</a>
-             <a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a>
+            <div class="navbar-brand" id="logo">图书管理系统</div>           
+        </div> 
+        <div class="nav-information">
+        <!--+信息--> 
+            <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['user_name']; ?>&nbsp;</a>
+            <a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
         </div>
    </div>
 <div class="bg">

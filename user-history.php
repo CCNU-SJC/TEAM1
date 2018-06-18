@@ -47,15 +47,17 @@
     <div class="navbar navbar-duomi navbar-static-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <div class="navbar-brand" id="logo">图书管理系统
-                        </div>
-                          <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['user_name']; ?>&nbsp;</a>
-                         <a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a>
+                        <div class="navbar-brand" id="logo">图书管理系统</div>
+                    </div>
+                    <div class="nav-information">
+                         <!--+信息--> 
+                         <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['user_name']; ?>&nbsp;</a>
+                         <a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
                     </div>
                 </div>
     </div>
     
-    <div class="container-fluid">
+    <div class="container-fluid" style="min-height: 680px;">
                 <div class="row">
                     <div id="nav-up" class="col-md-2">
                         <ul id="main-nav" class="nav nav-tabs nav-stacked" >
@@ -85,6 +87,13 @@
                                 <a href="./user-history.php">
                                     <i class="glyphicon glyphicon-globe"></i>
                                     借阅历史
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="./search-book.php">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                    图书搜索
                                 </a>
                             </li>
         
@@ -135,6 +144,11 @@
                     </div>                      
                 </div>
     </div>
+    <div class="copyright" style="
+    background-color: #ccc;
+    text-align: center;
+    height: 30px;
+    padding-top: 5px;">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
     </body>
     
 <script>

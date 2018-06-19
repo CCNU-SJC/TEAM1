@@ -73,7 +73,7 @@ if(isset($_POST['btn-signup']))
 		</div> 
 </div>
 <h1 class="w3ls">用户注册</h1>
-<div class="content" style="min-height: 495px;">
+<div class="content" style="min-height: 558px;">
 	<div class="content-agileits">
 
 		<form  method="post" class="form-signin" data-toggle="validator" role="form">
@@ -101,16 +101,16 @@ if(isset($_POST['btn-signup']))
 	    ?>
 
 			<div class="form-group agileinfo wthree w3-agileits agile">
-				<label for="username" class="control-label">用户名</label>
+				
 				<input type="text" class="form-control" name="txt_user_name" id="username" placeholder="请输入用户名"  value="<?php if(isset($error)){echo $user_name;}?>" data-error="请输入您的用户名" required>
 				<div class="help-block with-errors"></div>
 			</div>
 			<div class="form-group">
-				<label for="inputPassword" class="control-label">密码</label>
+				
 				<div class="form-inline row">
 					<div class="form-group col-sm-6">
 						<input type="password" data-minlength="6" class="form-control"  name="txt_password" id="inputPassword" placeholder="请输入6位密码" required>
-						<div class="help-block">最少请输入6位数字</div>
+						<div class="help-block">最少请输入6位密码</div>
 					</div>
 					<div class="form-group col-sm-6 w3-agile">
 						<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="您的输入不匹配" placeholder="确认输入" required>

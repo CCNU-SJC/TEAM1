@@ -101,13 +101,6 @@
                                     管理用户信息
                                 </a>
                             </li>
-
-                            <li class="change1">
-                                <a href="./sign-up.php">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                    用户信息注册
-                                </a>
-                            </li>
         
                         </ul>
                     </div>

@@ -75,26 +75,12 @@ if(isset($_POST['btn-login']))
                     </button>
                 </div>
 
-            </form>
-            <a href="admin-login.php" >
-<!--     style="width:100%;     display: inline-block;
-    vertical-align: middle;
-    padding: 12px 24px;
-    margin: 0px;
-    margin-top:-5px;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    color: #ffffff;
-    background-color: #3b4650;
-    border-radius: 3px;
-    border: none;
-    text-decoration:none; 
-    outline: none;" -->
-    <i class="glyphicon glyphicon-log-in"></i> &nbsp;管理员登录</a>
+            </form> 
+            <div class="text-center alert alert-success">
+                <label>没有账号， <a href="sign-up.php">请注册</a></label>
+            </div>
+            <a href="admin-login.php" ><i class="glyphicon glyphicon-log-in"></i> &nbsp;管理员登录</a>
+           
         </div>
         <div class="copyright">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
   </div>

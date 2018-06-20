@@ -1,5 +1,5 @@
 <?php
-//+php
+//获取用户权限
   require_once("admin_session.php");
   
   require_once("class.admin.php");
@@ -12,7 +12,6 @@
   $stmt->execute(array(":admin_id"=>$admin_id));
   
   $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,7 +61,7 @@
                         <div class="navbar-brand" id="logo">图书管理系统</div>
                     </div>
                     <div class="nav-information">
-                        <!--+信息--> 
+                        <!--显示用户信息--> 
                         <span class="glyphicon glyphicon-user"></span>&nbsp;你好，<?php echo $userRow['admin_name']; ?>&nbsp;</a>
                         <a href="logout.php?logout=true"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a>
                     </div>
@@ -112,11 +111,9 @@
                             <table class="table table-striped table-hover table-responsive">  
                                     
                                         <?php
-
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
                                         $query = "SELECT * FROM reader ORDER BY user_id ASC";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-
                                          if (!mysqli_num_rows($result)) {
                                             echo '<p>目前暂无用户……</p>';
                                          }
@@ -131,22 +128,14 @@
                                                
                                                 <tbody id="itemContainer">  
                                                 <div class="holder"></div>
-
                                                 <tr>';
                                              while ($row = mysqli_fetch_array($result)){    
                                               echo '<td>'.$row['user_name'] .'</td>';
                                               echo '<td>'.$row['user_id'] .'</td>';
                                               echo '<td>'.$row['register_day'] .'</td>';
                                               echo '<td>';
-                                              if($row['user_state']=='1'){
-                                                echo '<td><a class="btn btn-danger" href="state/forbidden.php?user_id='.$row['user_id'].'">禁用</a></td>';
-                                              }
-                                              else{
-                                                echo '<td><a class="btn btn-default" href="">禁用</a></td>';
-                                              }
                                               echo '</td></tr></tbody> '; 
                                           }}
-
                                         ?>
                                     
                             </table>

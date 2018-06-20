@@ -12,7 +12,6 @@
     $stmt->execute(array(":user_id"=>$user_id));
     
     $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -104,7 +103,7 @@
                     <div class="col-md-10">
                         <div class="approval">
                                 <fieldset>
-                                        <legend>审批状态</legend>
+                                        <legend>待审批</legend>
                                 </fieldset>
                                 <table id="test" class="table table-striped table-hover table-responsive">  
                                         <thead>  
@@ -124,15 +123,13 @@
                                         <?php
                                         $user_id = $userRow['user_id'];
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
-                                        $query = "SELECT * FROM apply WHERE approval_state = '待审批' AND user_id ='$user_id' OR approval_state = '不通过' AND user_id ='$user_id'";
+                                        $query = "SELECT * FROM apply WHERE approval_state = '待审批' AND user_id ='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
                                     
                                         echo "<div class='holder'></div>";
-
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
                                             
-
                                             if($row['approval_state'] !='通过')
                                             {
                                             echo '<tr>';
@@ -149,6 +146,53 @@
                                         </tbody>  
                                 </table>  
                         </div>
+
+                         <div class="approval">
+                                <fieldset>
+                                        <legend>未通过</legend>
+                                </fieldset>
+                                <table id="test" class="table table-striped table-hover table-responsive">  
+                                        <thead>  
+                                            <tr>
+                                                <th>图书名称</th>
+                                                <th>图书编号</th>
+                                                <th>ISBN</th>
+                                                <th>申请类型</th>
+                                                <th>申请状态</th>
+                                                <th>申请时间</th>
+                                            </tr>  
+                                        </thead>  
+                                        <tbody  id="itemContainer">
+                                        
+
+
+                                        <?php
+                                        $user_id = $userRow['user_id'];
+                                        $dbc = mysqli_connect('localhost','root','','book_manager');
+                                        $query = "SELECT * FROM apply WHERE approval_state = '不通过' AND user_id ='$user_id'";
+                                        $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+                                    
+                                        echo "<div class='holder'></div>";
+                                        while ($row = mysqli_fetch_array($result)) 
+                                        {
+                                            
+                                            if($row['approval_state'] !='通过')
+                                            {
+                                            echo '<tr>';
+                                            echo '<td>' . $row['name'] .  '</td>';
+                                            echo '<td>' . $row['book_id'] .  '</td>';
+                                            echo '<td>' . $row['ISBN'] .  '</td>';
+                                            echo '<td>' . $row['apply_type'] .  '</td>';
+                                            echo '<td>' . $row['approval_state'] .  '</td>';
+                                            echo '<td>' . $row['apply_time'] .  '</td>';
+                                            echo '</tr>';
+                                            }
+                                        }
+                                        ?>
+                                        </tbody>  
+                                </table>  
+                        </div>
+
                     </div>
                 </div>
                        
@@ -163,7 +207,6 @@
 
 
 <script>
-
 $(document).ready(function () {
 $("div.holder").jPages({
 containerID: "itemContainer",
@@ -176,7 +219,6 @@ keyBrowse: true,
 scrollBrowse: true
 });
 });
-
 </script>
 
  </html>

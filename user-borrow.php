@@ -121,9 +121,6 @@
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
                                         $query = "SELECT * FROM user_record WHERE return_time IS NULL AND user_id ='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-                                            
-                                        echo "<div class='holder'></div>";
-
 
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
@@ -143,6 +140,9 @@
                                         ?>
                                         </tbody>  
                                 </table>
+<div align="center">
+<div class='holder'></div> 
+</div>
                             </div>  
                     </div>
                 </div>
@@ -161,7 +161,7 @@ first: '首页',//false为不显示
 previous: '上一页',//false为不显示
 next: '下一页',//false为不显示 自定义按钮
 last: '尾页',//false为不显示
-perPage: 5,
+perPage: 10,
 keyBrowse: true,
 scrollBrowse: true
 });

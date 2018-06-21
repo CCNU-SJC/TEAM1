@@ -39,6 +39,10 @@
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 <!-- 引入中文语言包 -->
 <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<link rel="stylesheet" href="css/jPages.css">
+<script src="js/jPages.min.js"></script>
+
 </head>
 <body>
    <div class="navbar navbar-duomi navbar-static-top" role="navigation">
@@ -96,15 +100,16 @@
           <th>状态</th>
           </tr>  
           </thead>
+         
 
 
 <?php
 
 error_reporting(0);
+echo " <tbody id= 'itemContainer'>";
     
 $select = $_POST['select'];    
 $input = $_POST['input'];
-
 
 if ($_POST['input']){
     
@@ -155,19 +160,8 @@ else{
             {
                 echo '<td><input class="btn btn-danger" type="button" value="不可借阅"></td>';
             }
-
-
-          echo '</tr>';
-          echo "</tbody>";
-         
-
-
         }
         
-
-        echo '</table>';
-        echo '</div>';
-
     }  
     
 
@@ -178,7 +172,19 @@ else{
 
 
 ?>
+
+
+</tbody>  
+</table> 
+
+<div align="center">
+<div class='holder'></div> 
 </div>
+
+</div>
+</div>
+
+
 
 
 <div class="theme-popover" style="display: none;">
@@ -200,6 +206,9 @@ else{
 
                    </ul>
                 </form>
+
+               
+
             </div> 
 
     </div>
@@ -249,6 +258,20 @@ else{
 
             
  </script>
+
+<script>
+$(document).ready(function () {
+$("div.holder").jPages({
+containerID: "itemContainer",
+first: '首页',//false为不显示
+previous: '上一页',//false为不显示
+next: '下一页',//false为不显示 自定义按钮
+last: '尾页',//false为不显示
+perPage: 10,
+keyBrowse: true,
+});
+});
+</script>
  
 </body>
 </html>

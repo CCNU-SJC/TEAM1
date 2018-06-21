@@ -116,7 +116,8 @@
                                                 <th>申请时间</th>
                                             </tr>  
                                         </thead>  
-                                        <tbody  id="itemContainer">
+                                      
+                                        
                                         
 
 
@@ -125,8 +126,9 @@
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
                                         $query = "SELECT * FROM apply WHERE approval_state = '待审批' AND user_id ='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
+                                        echo " <tbody id= 'itemContainer'>";
                                     
-                                        echo "<div class='holder'></div>";
+                                        
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
                                             
@@ -145,6 +147,10 @@
                                         ?>
                                         </tbody>  
                                 </table>  
+<div align="center">
+<div class='holder'></div> 
+</div>
+
                         </div>
 
                          <div class="approval">
@@ -162,7 +168,7 @@
                                                 <th>申请时间</th>
                                             </tr>  
                                         </thead>  
-                                        <tbody  id="itemContainer">
+                                        <tbody id = 'diss'>
                                         
 
 
@@ -172,7 +178,6 @@
                                         $query = "SELECT * FROM apply WHERE approval_state = '不通过' AND user_id ='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
                                     
-                                        echo "<div class='holder'></div>";
                                         while ($row = mysqli_fetch_array($result)) 
                                         {
                                             
@@ -197,6 +202,7 @@
                 </div>
                        
     </div>
+   
     <div class="copyright" style="
     background-color: #ccc;
     text-align: center;
@@ -204,7 +210,6 @@
     padding-top: 5px;">TEAM1 版权所有©2018 技术支持电话：000-00000000</div>
     
 </body>
-
 
 <script>
 $(document).ready(function () {
@@ -216,9 +221,10 @@ next: '下一页',//false为不显示 自定义按钮
 last: '尾页',//false为不显示
 perPage: 5,
 keyBrowse: true,
-scrollBrowse: true
 });
 });
 </script>
 
- </html>
+</script>
+
+</html>

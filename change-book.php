@@ -171,9 +171,6 @@ else{
   $query = "SELECT * FROM book_info";
   $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
   
-  echo"<div class='holder'></div>";
-
-
 }
 
 
@@ -197,11 +194,8 @@ else{
                 </td>';
 
           echo '</tr>';
-          echo "</tbody>";
 
         }
-        echo '</table>';
-        echo '</div>';
 
     }  
     
@@ -214,6 +208,12 @@ else{
 
 
 ?>
+
+</tbody>  
+</table>  
+<div align="center">
+<div class='holder'></div> 
+
 </div>
 
 
@@ -338,9 +338,8 @@ first: '首页',//false为不显示
 previous: '上一页',//false为不显示
 next: '下一页',//false为不显示 自定义按钮
 last: '尾页',//false为不显示
-perPage: 5,
+perPage: 10,
 keyBrowse: true,
-scrollBrowse: true
 });
 });
 </script>

@@ -121,8 +121,6 @@
                                                     </thead>
                                                     
                                                     <tbody id="apply_type">';
-                                                    echo "<div class='holder'></div>";
-
                                                     
                                                     while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
@@ -176,13 +174,12 @@
                                             <th>图书ID</th>
                                             <th>ISBN</th>
                                             <th>操作类型</th>
-                                             <th>申请时间</th>
+                                            <th>申请时间</th>
                                             <th>操作时间</th>
                                         </tr>  
                                     </thead>  
                                    
                                     <tbody id="itemContainer">  ';
-                                    echo "<div class='holder'></div>";
 
                                     while ($row = mysqli_fetch_array($result)) {
                                                     echo '<tr>';
@@ -198,10 +195,14 @@
                                                     echo '</tr>';
 
                                 }
-                                echo ' </tbody>  ';
-                                echo ' </table> ';
                               }
                             ?>
+</tbody>  
+</table>  
+<div align="center">
+<div class='holder'></div> 
+</div>
+
                         </div>  
                     </div>
                 </div>
@@ -236,16 +237,14 @@
 <script>
 $(document).ready(function () {
 $("div.holder").jPages({
-containerID: "apply_type","itemContainer",
+containerID:"itemContainer",
 first: '首页',//false为不显示
 previous: '上一页',//false为不显示
 next: '下一页',//false为不显示 自定义按钮
 last: '尾页',//false为不显示
 perPage: 5,
 keyBrowse: true,
-scrollBrowse: true
 });
 });
 </script>
-
  </html>

@@ -126,7 +126,7 @@
                                         $dbc = mysqli_connect('localhost','root','','book_manager');
                                         $query = "SELECT * FROM apply WHERE approval_state = '待审批' AND user_id ='$user_id'";
                                         $result = mysqli_query($dbc,$query) or die("error quering database". mysqli_error($dbc));
-                                        echo " <tbody id= 'itemContainer'>";
+                                        echo " <tbody>";
                                     
                                         
                                         while ($row = mysqli_fetch_array($result)) 
@@ -147,10 +147,6 @@
                                         ?>
                                         </tbody>  
                                 </table>  
-<div align="center">
-<div class='holder'></div> 
-</div>
-
                         </div>
 
                          <div class="approval">
@@ -168,7 +164,7 @@
                                                 <th>申请时间</th>
                                             </tr>  
                                         </thead>  
-                                        <tbody id = 'diss'>
+                                        <tbody id = 'itemContainer'>
                                         
 
 
@@ -194,8 +190,13 @@
                                             }
                                         }
                                         ?>
+
                                         </tbody>  
                                 </table>  
+<div align="center">
+<div class='holder'></div> 
+</div>
+
                         </div>
 
                     </div>
@@ -227,4 +228,4 @@ keyBrowse: true,
 
 </script>
 
-</html>
+ </html>

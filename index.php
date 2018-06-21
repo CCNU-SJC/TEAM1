@@ -16,7 +16,7 @@ if(isset($_POST['btn-login']))
     }
     else
     {
-        $error = "Wrong Details !" ; 
+        $error = "用户名或密码错误 ! !" ; 
     }   
 }
 ?>

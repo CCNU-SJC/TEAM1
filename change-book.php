@@ -232,7 +232,7 @@ else{
                       <li><strong>作者:</strong><small id="api_content2"></small></li>
                       <li><strong>ISBN：</strong><small id="api_content3"></small></li>
                       <li><strong>出版社:</strong><small id="api_content4"></small></li>
-                      <li><strong>图书简介:</strong><small><textarea id="api_content5"></textarea></small></li>
+                      <li><strong>图书简介:</strong><small><textarea id="api_content5" disabled="disabled"></textarea></small></li>
 
                    </ul>
                 </form>

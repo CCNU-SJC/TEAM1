@@ -51,7 +51,7 @@
                <div id="api_content1" class="col-md-5"></div>
                <div class="bookcontent_detail col-md-7">
                   <ul id="api_content" ></ul>
-                  <div id="api_content2"></div>
+                  <div id="api_content2"><textarea id="api_content3" disabled="disabled" style="display:none;"></textarea></div>
                </div>
             </div>    
             <div class="book_detail col-md-2"></div>
@@ -97,16 +97,18 @@
                         $("#api_content").append("<li>ISBN： "+data.isbn13+"</li>");
                         $("#api_content").append("<li>出版社： "+data.publisher+"</li>");
                         $("#api_content").append("<li>出版日期： "+data.pubdate+"</li>");
-                        $("#api_content2").append("<textarea> "+data.summary+"</textarea>");
+                        $("#api_content3").append(data.summary);
+                        $("#api_content3").toggle(); 
                         $("#api_content1").append("<img src=" +data.image+">");
                      }
-                })   
+                });
+                  
             });
 
             $(".inputisbn").click(function(){
                 $("#api_content").empty();
                 $("#api_content1").empty();
-                $("#api_content2").empty();
+                $("#api_content3").hide(); 
         });
     });
 </script>

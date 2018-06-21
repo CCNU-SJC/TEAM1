@@ -164,7 +164,6 @@ next: '下一页',//false为不显示 自定义按钮
 last: '尾页',//false为不显示
 perPage: 10,
 keyBrowse: true,
-scrollBrowse: true
 });
 });
 </script>

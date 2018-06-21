@@ -127,18 +127,20 @@
                                                 </thead>  
                                                
                                                 <tbody id="itemContainer">  
-                                                <div class="holder"></div>
                                                 <tr>';
                                              while ($row = mysqli_fetch_array($result)){    
                                               echo '<td>'.$row['user_name'] .'</td>';
                                               echo '<td>'.$row['user_id'] .'</td>';
                                               echo '<td>'.$row['register_day'] .'</td>';
                                               echo '<td>';
-                                              echo '</td></tr></tbody> '; 
+                                              echo '</td></tr> '; 
                                           }}
                                         ?>
-                                    
+                                    </tbody>
                             </table>
+<div align="center">
+<div class='holder'></div> 
+</div>
                         </div>
                     </div>
                 </div>
@@ -160,11 +162,11 @@ first: '首页',//false为不显示
 previous: '上一页',//false为不显示
 next: '下一页',//false为不显示 自定义按钮
 last: '尾页',//false为不显示
-perPage: 5,
+perPage: 10,
 keyBrowse: true,
 scrollBrowse: true
 });
 });
 </script>
 
- </html>
+</html>

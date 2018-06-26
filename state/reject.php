@@ -18,10 +18,11 @@
   if($apply_type == "借书"){
 
   //更改图书信息
-   $query3 = "UPDATE book_info SET state='$returned' WHERE book_id='$book_id' ";}
+   $query3 = "UPDATE book_info SET state='$returned' WHERE book_id='$book_id' ";
 
   /// echo $query2;
-  $result2 = mysqli_query($dbc,$query3) or die("error quering database". mysqli_error($dbc));
+  $result2 = mysqli_query($dbc,$query3) or die("error quering database". mysqli_error($dbc));}
+
 
   header("Location:../change-manage.php");
   die();
